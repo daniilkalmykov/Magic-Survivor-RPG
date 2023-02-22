@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Player
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerMovement : MonoBehaviour
+    public sealed class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _movementSpeed;
         

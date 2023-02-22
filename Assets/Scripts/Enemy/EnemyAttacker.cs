@@ -2,7 +2,7 @@
 
 namespace Enemy
 {
-    public class EnemyAttacker : MonoBehaviour
+    public sealed class EnemyAttacker : MonoBehaviour
     {
                
     }   
