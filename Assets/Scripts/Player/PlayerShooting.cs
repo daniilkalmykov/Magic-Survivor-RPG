@@ -11,8 +11,19 @@ namespace Player
         [SerializeField] private float _shootingDistance;
         [SerializeField] private float _delay;
 
+        private Transform _enemy;
         private bool _isCoroutineStarted;
         private bool _canShoot;
+
+        private void OnEnable()
+        {
+            _playerAttackingTrigger.EnemyDetected += OnEnemyDetected;
+        }
+
+        private void OnDisable()
+        {
+            _playerAttackingTrigger.EnemyDetected -= OnEnemyDetected;
+        }
 
         private void Start()
         {
@@ -29,15 +40,24 @@ namespace Player
             {
                 if (_isCoroutineStarted == false)
                     StartCoroutine(WaitTimeBetweenShots());
-            }             
+            }
         }
 
         private void Shoot()
         {
+            if(_enemy == null)
+                return;
+            
             var newBullet = Instantiate(_bullet, _bulletSpawnPoint);
-            newBullet.Init(_playerAttackingTrigger.GetEnemyHealth().transform);
-           
+            newBullet.Init(_enemy);
+            newBullet.transform.SetParent(null);
+            
             _canShoot = false;
+        }
+
+        private void OnEnemyDetected(Transform enemy)
+        {
+            _enemy = enemy;
         }
 
         private IEnumerator WaitTimeBetweenShots()

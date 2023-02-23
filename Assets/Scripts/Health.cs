@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Health : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public abstract class Health : MonoBehaviour
 
     private float _currentHealth;
 
+    public event Action Died;
+    
     private void Start()
     {
         _currentHealth = _maxHealth;
@@ -21,6 +24,7 @@ public abstract class Health : MonoBehaviour
 
     protected virtual void Die()
     {
+        Died?.Invoke();
         gameObject.SetActive(false);
     }
 }

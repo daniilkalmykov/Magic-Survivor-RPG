@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using Enemy;
+﻿using Enemy;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -15,9 +14,9 @@ public class Bullet : MonoBehaviour
             Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.TryGetComponent(out EnemyHealth enemyHealth))
+        if (collision.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
             enemyHealth.TakeDamage(_damage);
         
         Destroy(gameObject);

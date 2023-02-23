@@ -1,3 +1,4 @@
+using System;
 using Enemy;
 using UnityEngine;
 
@@ -8,7 +9,9 @@ namespace Player
     {
         private CapsuleCollider _capsuleCollider;
         private EnemyHealth _enemyHealth;
-        
+
+        public event Action<Transform> EnemyDetected; 
+
         public bool IsEnemyInTrigger { get; private set; }
 
         private void Awake()
@@ -18,17 +21,24 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out EnemyHealth enemyHealth))
+            if (other.TryGetComponent(out EnemyHealth enemyHealth) && enemyHealth.gameObject.activeSelf)
             {
                 IsEnemyInTrigger = true;
                 _enemyHealth = enemyHealth;
+
+                EnemyDetected?.Invoke(_enemyHealth.transform);
+                _enemyHealth.Died += OnDied;
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent(out EnemyHealth enemyHealth))
+            if (other.TryGetComponent(out EnemyHealth enemyHealth) && enemyHealth == _enemyHealth) 
+            {
                 IsEnemyInTrigger = false;
+
+                _enemyHealth.Died -= OnDied;
+            }
         }
 
         public void Init(float radius)
@@ -36,9 +46,9 @@ namespace Player
             _capsuleCollider.radius = radius;
         }
 
-        public EnemyHealth GetEnemyHealth()
+        private void OnDied()
         {
-            return _enemyHealth;
+            IsEnemyInTrigger = false;
         }
     }
 }
