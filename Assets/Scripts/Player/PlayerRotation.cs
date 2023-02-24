@@ -2,19 +2,13 @@
 
 namespace Player
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class PlayerRotation : MonoBehaviour
     {
         [SerializeField] private Joystick _joystick;
         [SerializeField] private PlayerAttackingTrigger _playerAttackingTrigger;
+        [SerializeField] private float _rotationSpeed;
 
-        private Rigidbody _rigidbody;
         private Transform _enemy;
-
-        private void Awake()
-        {
-            _rigidbody = GetComponent<Rigidbody>();
-        }
 
         private void OnEnable()
         {
@@ -26,12 +20,21 @@ namespace Player
             _playerAttackingTrigger.EnemyDetected -= OnEnemyDetected;
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             if (_playerAttackingTrigger.IsEnemyInTrigger == false)
             {
                 if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
-                    transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+                {
+                    var moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
+
+                    if (Vector3.Angle(transform.forward, moveDirection) > 0)
+                    {
+                        var newDirection = Vector3.RotateTowards(transform.forward, moveDirection,
+                            _rotationSpeed * Time.deltaTime, 0);
+                        transform.rotation = Quaternion.LookRotation(newDirection);
+                    }
+                }
             }
             else
             {
