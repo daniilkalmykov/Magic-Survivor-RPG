@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Player
 {
+    [RequireComponent(typeof(Animator))]
     public sealed class PlayerShooting : MonoBehaviour
     {
         [SerializeField] private PlayerAttackingTrigger _playerAttackingTrigger;
@@ -11,9 +12,15 @@ namespace Player
         [SerializeField] private float _shootingDistance;
         [SerializeField] private float _delay;
 
+        private Animator _animator;
         private Transform _enemy;
         private bool _isCoroutineStarted;
         private bool _canShoot;
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         private void OnEnable()
         {
@@ -53,6 +60,8 @@ namespace Player
             newBullet.transform.SetParent(null);
             
             _canShoot = false;
+        
+            _animator.SetTrigger(AnimatorStates.IsShooting);
         }
 
         private void OnEnemyDetected(Transform enemy)

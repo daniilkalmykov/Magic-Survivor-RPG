@@ -2,7 +2,7 @@
 
 namespace Player
 {
-    public class PlayerRotation : MonoBehaviour
+    public sealed class PlayerRotation : MonoBehaviour
     {
         [SerializeField] private Joystick _joystick;
         [SerializeField] private PlayerAttackingTrigger _playerAttackingTrigger;

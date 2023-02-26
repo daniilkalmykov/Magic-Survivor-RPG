@@ -18,7 +18,7 @@ namespace Player
 
         private void Update()
         {
-            _animator.SetFloat(AnimatorStates.IsRunning, _rigidbody.velocity.magnitude);
+            _animator.SetFloat(AnimatorStates.Speed, _rigidbody.velocity.magnitude);
         }
 
         public void Move(float directionX, float directionZ)

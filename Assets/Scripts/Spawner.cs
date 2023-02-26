@@ -73,8 +73,8 @@ public sealed class Spawner : EnemiesPool
                 enemyReward.IncreaseExperience(experienceValue);
         }
     }*/
-    
-    private void ResetOptions()
+
+    public void ResetOptions()
     {
         _spawnedEnemiesCount = 0;
         _currentWaveNumber = 0;

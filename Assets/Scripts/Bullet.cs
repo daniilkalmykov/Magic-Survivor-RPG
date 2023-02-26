@@ -1,7 +1,7 @@
 ﻿using Enemy;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public sealed class Bullet : MonoBehaviour
 {
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;

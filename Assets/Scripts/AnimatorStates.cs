@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class AnimatorStates : MonoBehaviour
+public static class AnimatorStates
 {
-    public static readonly int IsRunning = Animator.StringToHash("IsRunning");
+    public static readonly int Speed = Animator.StringToHash("Speed");
+    public static readonly int IsShooting = Animator.StringToHash("IsShooting");
 }
