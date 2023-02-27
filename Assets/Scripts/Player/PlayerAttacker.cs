@@ -1,21 +1,16 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(Animator))]
-    public sealed class PlayerShooting : MonoBehaviour
+    public sealed class PlayerAttacker : Attacker
     {
         [SerializeField] private PlayerAttackingTrigger _playerAttackingTrigger;
         [SerializeField] private Bullet _bullet;
         [SerializeField] private Transform _bulletSpawnPoint;
-        [SerializeField] private float _shootingDistance;
-        [SerializeField] private float _delay;
 
         private Animator _animator;
         private Transform _enemy;
-        private bool _isCoroutineStarted;
-        private bool _canShoot;
 
         private void Awake()
         {
@@ -34,23 +29,23 @@ namespace Player
 
         private void Start()
         {
-            _playerAttackingTrigger.Init(_shootingDistance);
+            _playerAttackingTrigger.Init(AttackDistance);
         }
 
         private void Update()
         {
-            if (_canShoot && _playerAttackingTrigger.IsEnemyInTrigger)
+            if (CanAttack && _playerAttackingTrigger.IsOpponentInTrigger)
             {
-                Shoot();
+                Attack();
             }
-            else if(_canShoot == false)
+            else if(CanAttack == false)
             {
-                if (_isCoroutineStarted == false)
-                    StartCoroutine(WaitTimeBetweenShots());
+                if (IsCoroutineStarted == false)
+                    StartCoroutine(WaitTimeBetweenAttacks());
             }
         }
 
-        private void Shoot()
+        protected override void Attack()
         {
             if(_enemy == null)
                 return;
@@ -59,7 +54,7 @@ namespace Player
             newBullet.Init(_enemy);
             newBullet.transform.SetParent(null);
             
-            _canShoot = false;
+            SwitchAttackStateToFalse();
         
             _animator.SetTrigger(AnimatorStates.IsShooting);
         }
@@ -67,16 +62,6 @@ namespace Player
         private void OnEnemyDetected(Transform enemy)
         {
             _enemy = enemy;
-        }
-
-        private IEnumerator WaitTimeBetweenShots()
-        {
-            _isCoroutineStarted = true;
-            
-            yield return new WaitForSeconds(_delay);
-            _canShoot = true;
-
-            _isCoroutineStarted = false;
         }
     }
 }

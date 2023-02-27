@@ -22,7 +22,7 @@ namespace Player
 
         private void Update()
         {
-            if (_playerAttackingTrigger.IsEnemyInTrigger == false)
+            if (_playerAttackingTrigger.IsOpponentInTrigger == false)
             {
                 if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
                 {

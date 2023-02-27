@@ -5,25 +5,17 @@ using UnityEngine;
 namespace Player
 {
     [RequireComponent(typeof(CapsuleCollider))]
-    public sealed class PlayerAttackingTrigger : MonoBehaviour
+    public sealed class PlayerAttackingTrigger : AttackingTrigger
     {
-        private CapsuleCollider _capsuleCollider;
         private EnemyHealth _enemyHealth;
 
         public event Action<Transform> EnemyDetected; 
 
-        public bool IsEnemyInTrigger { get; private set; }
-
-        private void Awake()
-        {
-            _capsuleCollider = GetComponent<CapsuleCollider>();
-        }
-
-        private void OnTriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out EnemyHealth enemyHealth) && enemyHealth.gameObject.activeSelf)
             {
-                IsEnemyInTrigger = true;
+                SwitchOpponentStateToTrue();
                 _enemyHealth = enemyHealth;
 
                 EnemyDetected?.Invoke(_enemyHealth.transform);
@@ -31,24 +23,14 @@ namespace Player
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        protected override void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent(out EnemyHealth enemyHealth) && enemyHealth == _enemyHealth) 
             {
-                IsEnemyInTrigger = false;
+                SwitchOpponentStateToFalse();
 
                 _enemyHealth.Died -= OnDied;
             }
-        }
-
-        public void Init(float radius)
-        {
-            _capsuleCollider.radius = radius;
-        }
-
-        private void OnDied()
-        {
-            IsEnemyInTrigger = false;
         }
     }
 }

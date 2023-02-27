@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GlobalWave : MonoBehaviour
+public sealed class GlobalWave : MonoBehaviour
 {
     [SerializeField] private List<Spawner> _spawners = new();
     [SerializeField] private int _workingSpawnersCount;

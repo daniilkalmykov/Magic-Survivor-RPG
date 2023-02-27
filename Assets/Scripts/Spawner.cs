@@ -97,7 +97,7 @@ public sealed class Spawner : EnemiesPool
         enemy.transform.position = _spawnPoints[spawnPointNumber].position;
         enemy.transform.LookAt(_player);
         enemy.gameObject.SetActive(true);
-        //enemy.Init(_player);
+        enemy.Init(_player);
 
         /*if (_player.TryGetComponent(out PlayerExperience playerExperience) &&
             enemy.TryGetComponent(out EnemyHealth enemyHealth) && enemy.TryGetComponent(out EnemyReward enemyReward) &&

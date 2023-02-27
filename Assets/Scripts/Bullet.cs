@@ -10,6 +10,9 @@ public sealed class Bullet : MonoBehaviour
 
     private void Update()
     {
+        if(_target.gameObject.activeSelf == false || _target == null)
+            Destroy(gameObject);
+        
         transform.position =
             Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
     }
