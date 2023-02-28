@@ -6,7 +6,7 @@ namespace Player
     public sealed class PlayerAttacker : Attacker
     {
         [SerializeField] private PlayerAttackingTrigger _playerAttackingTrigger;
-        [SerializeField] private Bullet _bullet;
+        [SerializeField] private PlayerBullet _playerBullet;
         [SerializeField] private Transform _bulletSpawnPoint;
 
         private Animator _animator;
@@ -50,7 +50,7 @@ namespace Player
             if(_enemy == null)
                 return;
             
-            var newBullet = Instantiate(_bullet, _bulletSpawnPoint);
+            var newBullet = Instantiate(_playerBullet, _bulletSpawnPoint);
             newBullet.Init(_enemy);
             newBullet.transform.SetParent(null);
             
@@ -58,7 +58,7 @@ namespace Player
         
             _animator.SetTrigger(AnimatorStates.IsShooting);
         }
-
+        
         private void OnEnemyDetected(Transform enemy)
         {
             _enemy = enemy;

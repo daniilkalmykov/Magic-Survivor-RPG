@@ -11,10 +11,15 @@ public abstract class Health : MonoBehaviour
     
     private void Start()
     {
-        _currentHealth = _maxHealth;
+        ResetValues();
     }
 
-    public virtual void TakeDamage(float damage)
+    public void ResetValues()
+    {
+        _currentHealth = _maxHealth;
+    }
+    
+    public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
 

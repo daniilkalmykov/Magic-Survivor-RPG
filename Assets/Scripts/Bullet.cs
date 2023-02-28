@@ -1,27 +1,29 @@
-﻿using Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 
-public sealed class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour
 {
+    private const float TargetYPosition = 1.5f;
+    
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;
     
     private Transform _target;
 
+    protected float Damage => _damage;
+    
     private void Update()
     {
         if(_target.gameObject.activeSelf == false || _target == null)
             Destroy(gameObject);
-        
+
+        var position = _target.position;
+        var targetPosition = new Vector3(position.x, TargetYPosition, position.z);
         transform.position =
-            Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
+            Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
-            enemyHealth.TakeDamage(_damage);
-        
         Destroy(gameObject);
     }
 

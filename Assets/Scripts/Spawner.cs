@@ -24,7 +24,7 @@ public sealed class Spawner : EnemiesPool
     {
         ResetOptions();
         
-        Init(CurrentWave.Enemy, CurrentWave.EnemiesCount, transform.position);
+        Init(CurrentWave.EnemyAttacker, CurrentWave.EnemiesCount, transform.position);
     }
 
     private void Update()
@@ -90,14 +90,15 @@ public sealed class Spawner : EnemiesPool
         SetWave(_currentWaveNumber);
     }
     
-    private void SetEnemy(EnemyAttacker enemy)
+    private void SetEnemy(EnemyAttacker enemyCloseAttacker)
     {
         var spawnPointNumber = Random.Range(0, _spawnPoints.Length);
         
-        enemy.transform.position = _spawnPoints[spawnPointNumber].position;
-        enemy.transform.LookAt(_player);
-        enemy.gameObject.SetActive(true);
-        enemy.Init(_player);
+        enemyCloseAttacker.transform.position = _spawnPoints[spawnPointNumber].position;
+        enemyCloseAttacker.transform.LookAt(_player);
+        enemyCloseAttacker.gameObject.SetActive(true);
+        enemyCloseAttacker.transform.SetParent(null);
+        enemyCloseAttacker.Init(_player);
 
         /*if (_player.TryGetComponent(out PlayerExperience playerExperience) &&
             enemy.TryGetComponent(out EnemyHealth enemyHealth) && enemy.TryGetComponent(out EnemyReward enemyReward) &&
@@ -106,6 +107,11 @@ public sealed class Spawner : EnemiesPool
             enemyReward.Init(playerExperience, playerShooting);
             enemyHealth.Reset();
         }*/
+
+        if (enemyCloseAttacker.TryGetComponent(out EnemyHealth enemyHealth))
+            enemyHealth.ResetValues();
+        else
+            throw new ArgumentNullException();
     }
 
     private void SetWave(int waveNumber)
@@ -118,11 +124,11 @@ public sealed class Spawner : EnemiesPool
 [Serializable]
 public class Wave
 {
-    [SerializeField] private EnemyAttacker _enemy;
+    [SerializeField] private EnemyAttacker _enemyAttacker;
     [SerializeField] private int _enemiesCount;
     [SerializeField] private float _delay;
 
-    public EnemyAttacker Enemy => _enemy;
+    public EnemyAttacker EnemyAttacker => _enemyAttacker;
     public int EnemiesCount => _enemiesCount;
     public float Delay => _delay;
 }

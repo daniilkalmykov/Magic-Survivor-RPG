@@ -8,16 +8,16 @@ namespace Enemy
         [SerializeField] private float _movementSpeed;
         
         private Transform _player;
-        private EnemyAttacker _enemyAttacker;
+        private EnemyAttacker _enemyCloseAttacker;
 
         private void Awake()
         {
-            _enemyAttacker = GetComponent<EnemyAttacker>();
+            _enemyCloseAttacker = GetComponent<EnemyAttacker>();
         }
 
         private void Start()
         {
-            _player = _enemyAttacker.Player;
+            _player = _enemyCloseAttacker.Player;
         }
 
         private void Update()

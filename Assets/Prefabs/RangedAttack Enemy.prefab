@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1847871574771743827}
   - component: {fileID: 1847871574771744681}
   - component: {fileID: 1847871574771744680}
-  - component: {fileID: 1847871574771744683}
+  - component: {fileID: 8181272517941671515}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: RangedAttack Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,6 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4333068433299239762}
+  - {fileID: 1960187035267421513}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -147,7 +148,7 @@ MonoBehaviour:
   _maxHealth: 100
   _experienceCubes:
   - {fileID: 5138764607067884772, guid: 2d9ab00aa7944cb48a825e68a8cee5db, type: 3}
---- !u!114 &1847871574771744683
+--- !u!114 &8181272517941671515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,13 +157,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1847871574771743830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3653afaff37445caa43f566850b24e38, type: 3}
+  m_Script: {fileID: 11500000, guid: 041d36e3e0294913a62608176a5e298e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 2
+  _attackDistance: 7
   _delay: 3
   _enemyAttackingTrigger: {fileID: 3133294249872758930}
-  _damage: 10
+  _enemyBullet: {fileID: -8251194674260124815, guid: 8999be1b0e054c54aa8fbd2b217d0c8b, type: 3}
+  _bulletSpawnPoint: {fileID: 1960187035267421513}
 --- !u!1 &8306359366340601109
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,3 +224,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5b3dc314a44039b4d1c30d1927c45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8643179436538866430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1960187035267421513}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1960187035267421513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643179436538866430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.539, y: 0.5, z: 0.399}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1847871574771744686}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

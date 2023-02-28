@@ -4,25 +4,23 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public sealed class EnemyAttacker : Attacker
+    public abstract class EnemyAttacker : Attacker
     {
         [SerializeField] private EnemyAttackingTrigger _enemyAttackingTrigger;
-        [SerializeField] private float _damage;
-        
-        private PlayerHealth _playerHealth;
         
         public Transform Player { get; private set; }
+        protected PlayerHealth PlayerHealth { get; private set; }
         
         private void Start()
         {
             if (Player.TryGetComponent(out PlayerHealth playerHealth))
-                _playerHealth = playerHealth;
+                PlayerHealth = playerHealth;
             else
                 throw new ArgumentNullException();
             
             _enemyAttackingTrigger.Init(AttackDistance);
         }
-
+        
         private void Update()
         {
             if (CanAttack && _enemyAttackingTrigger.IsOpponentInTrigger)
@@ -35,16 +33,10 @@ namespace Enemy
                     StartCoroutine(WaitTimeBetweenAttacks());
             }
         }
-
+        
         public void Init(Transform player)
         {
             Player = player;
         }
-
-        protected override void Attack()
-        {
-            _playerHealth.TakeDamage(_damage);
-            SwitchAttackStateToFalse();
-        }
-    }   
+    }
 }

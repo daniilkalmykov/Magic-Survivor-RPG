@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyAttackingTrigger : AttackingTrigger
+    public sealed class EnemyAttackingTrigger : AttackingTrigger
     {
         private PlayerHealth _playerHealth;
 
@@ -17,7 +17,7 @@ namespace Enemy
                 _playerHealth.Died += OnDied;
             }
         }
-
+        
         protected override void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent(out PlayerHealth playerHealth) && _playerHealth == playerHealth)
