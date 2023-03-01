@@ -22,7 +22,7 @@ namespace Enemy
 
         private void Update()
         {
-            if(_player == null)
+            if (_player == null)
                 return;
 
             var playerPosition = _player.position;

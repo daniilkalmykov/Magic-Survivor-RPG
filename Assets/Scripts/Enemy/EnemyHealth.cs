@@ -23,7 +23,11 @@ namespace Enemy
             var cube = _experienceCubes[randomExperienceCubeNumber];
 
             if (randomChance > cube.ChanceToCreate)
-                Instantiate(cube, transform.position, Quaternion.identity, null);
+            {
+                var position = transform.position;
+                const float YPosition = 1;
+                Instantiate(cube, new Vector3(position.x, YPosition, position.z), Quaternion.identity, null);
+            }
         }
     }
 }

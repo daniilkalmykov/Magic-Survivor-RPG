@@ -56,7 +56,7 @@ namespace Player
             
             SwitchAttackStateToFalse();
         
-            _animator.SetTrigger(AnimatorStates.IsShooting);
+            _animator.SetTrigger(AnimatorStates.Attack);
         }
         
         private void OnEnemyDetected(Transform enemy)

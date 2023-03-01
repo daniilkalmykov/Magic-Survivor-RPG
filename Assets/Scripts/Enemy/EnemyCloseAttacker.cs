@@ -8,7 +8,7 @@ namespace Enemy
         
         protected override void Attack()
         {
-            PlayerHealth.TakeDamage(_damage);
+            PlayerHealth.TryTakeDamage(_damage);
             SwitchAttackStateToFalse();
         }
     }   

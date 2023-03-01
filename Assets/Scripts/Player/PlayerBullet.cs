@@ -10,7 +10,7 @@ namespace Player
             base.OnCollisionEnter(collision);
             
             if (collision.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
-                enemyHealth.TakeDamage(Damage);
+                enemyHealth.TryTakeDamage(Damage);
         }
     }
 }

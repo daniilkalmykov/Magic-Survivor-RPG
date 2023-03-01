@@ -4,13 +4,21 @@ using UnityEngine;
 
 namespace Enemy
 {
+    [RequireComponent(typeof(Animator))]
     public abstract class EnemyAttacker : Attacker
     {
         [SerializeField] private EnemyAttackingTrigger _enemyAttackingTrigger;
+
+        private Animator _animator;
         
         public Transform Player { get; private set; }
         protected PlayerHealth PlayerHealth { get; private set; }
-        
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
+
         private void Start()
         {
             if (Player.TryGetComponent(out PlayerHealth playerHealth))
@@ -25,6 +33,7 @@ namespace Enemy
         {
             if (CanAttack && _enemyAttackingTrigger.IsOpponentInTrigger)
             {
+                _animator.SetTrigger(AnimatorStates.Attack);
                 Attack();
             }
             else
@@ -32,6 +41,9 @@ namespace Enemy
                 if (IsCoroutineStarted == false)
                     StartCoroutine(WaitTimeBetweenAttacks());
             }
+
+            var playerPosition = Player.position;
+            transform.LookAt(new Vector3(playerPosition.x, transform.position.y, playerPosition.z));
         }
         
         public void Init(Transform player)
