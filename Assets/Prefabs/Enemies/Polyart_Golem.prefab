@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: -8807523973867256782}
   - component: {fileID: -948490183358756487}
   - component: {fileID: 4103300098068599496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Polyart_Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06af34626d70430bb63869cf0a1a1419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dieAnimationClip: {fileID: 7400000, guid: d3aad3207f5c7984a878d6d3e713003f, type: 2}
   _maxHealth: 250
   _experienceCubes:
   - {fileID: 5138764607067884772, guid: 2d9ab00aa7944cb48a825e68a8cee5db, type: 3}
@@ -441,7 +442,7 @@ MonoBehaviour:
   _attackDistance: 4
   _delay: 5
   _enemyAttackingTrigger: {fileID: 1246030895232576154}
-  _damage: 40
+  _damage: 50
 --- !u!114 &4103300098068599496
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: -6054826203982233253}
   - component: {fileID: 2586932432087733053}
   - component: {fileID: -5485911235140282413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FootmanPolyart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ Transform:
   m_GameObject: {fileID: 928723031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 306514543}
@@ -558,7 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06af34626d70430bb63869cf0a1a1419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
+  _dieAnimationClip: {fileID: 7400000, guid: a58aeb722e452254686f56bdc4b22c67, type: 3}
+  _maxHealth: 75
   _experienceCubes:
   - {fileID: 5138764607067884772, guid: 2d9ab00aa7944cb48a825e68a8cee5db, type: 3}
 --- !u!114 &2586932432087733053
@@ -573,10 +574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3653afaff37445caa43f566850b24e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 3
+  _attackDistance: 2
   _delay: 3
   _enemyAttackingTrigger: {fileID: 4917966851069207590}
-  _damage: 10
+  _damage: 20
 --- !u!114 &-5485911235140282413
 MonoBehaviour:
   m_ObjectHideFlags: 0

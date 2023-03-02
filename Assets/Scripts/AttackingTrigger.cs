@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
 public abstract class AttackingTrigger : MonoBehaviour
 {
     private CapsuleCollider _capsuleCollider;
+    private float _radius;
     
     public bool IsOpponentInTrigger { get; private set; }
 
@@ -14,10 +16,14 @@ public abstract class AttackingTrigger : MonoBehaviour
 
     public void Init(float radius)
     {
+        if (radius <= 0)
+            throw new ArgumentNullException(); 
+        
+        _radius = radius;
         _capsuleCollider.radius = radius;
     }
 
-    protected void OnDied()
+    protected virtual void OnDied()
     {
         IsOpponentInTrigger = false;
     }
@@ -30,6 +36,16 @@ public abstract class AttackingTrigger : MonoBehaviour
     protected void SwitchOpponentStateToFalse()
     {
         IsOpponentInTrigger = false;
+    }
+
+    protected void SetStartRadius()
+    {
+        _capsuleCollider.radius = 0;
+    }
+
+    protected void SetInitRadius()
+    {
+        _capsuleCollider.radius = _radius;
     }
 
     protected abstract void OnTriggerEnter(Collider other);

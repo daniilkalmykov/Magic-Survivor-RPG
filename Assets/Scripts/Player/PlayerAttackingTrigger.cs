@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Enemy;
 using UnityEngine;
 
@@ -31,6 +32,21 @@ namespace Player
 
                 _enemyHealth.Died -= OnDied;
             }
+        }
+
+        protected override void OnDied()
+        {
+            base.OnDied();
+            StartCoroutine(ResetRadius());
+        }
+
+        private IEnumerator ResetRadius()
+        {
+            const float Delay = 0.1f;
+            
+            SetStartRadius();
+            yield return new WaitForSeconds(Delay);
+            SetInitRadius();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Enemy
 
         protected override void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PlayerHealth playerHealth))
+            if (other.TryGetComponent(out PlayerHealth playerHealth) && playerHealth.IsDied == false)
             {
                 SwitchOpponentStateToTrue();
                 _playerHealth = playerHealth;

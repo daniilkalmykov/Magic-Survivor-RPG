@@ -1,15 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Enemy
 {
+    [RequireComponent(typeof(EnemyAttacker), typeof(EnemyMovement))]
     public sealed class EnemyHealth : Health
     {
         [SerializeField] private ExperienceCube[] _experienceCubes;
-        
+
+        private EnemyAttacker _enemyAttacker;
+        private EnemyMovement _enemyMovement;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            _enemyAttacker = GetComponent<EnemyAttacker>();
+            _enemyMovement = GetComponent<EnemyMovement>();
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            _enemyAttacker.enabled = true;
+            _enemyMovement.enabled = true;
+        }
+
         protected override void Die()
         {
             base.Die();
             CreateExperienceCube();
+        }
+
+        protected override IEnumerator DieCoroutine()
+        {
+            _enemyAttacker.enabled = false;
+            _enemyMovement.enabled = false;
+            return base.DieCoroutine();
         }
 
         private void CreateExperienceCube()
