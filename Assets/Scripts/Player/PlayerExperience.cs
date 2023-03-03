@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player
 {
@@ -6,29 +7,39 @@ namespace Player
     {
         [SerializeField] private int _borderExperienceToNextLevel;
 
-        private int _currentExperience;
-        private int _experienceToNextLevel;
-        private int _level = 1;
-        private int _startBorderExperience;
+        public event Action LevelChanged;
+        public event Action<int, int> ExperienceChanged;
+        
+        public int CurrentExperience { get; private set; }
+        public int Level { get; private set; } = 1;
+        public int ExperienceToNextLevel { get; private set; }
 
         private void Awake()
         {
-            _startBorderExperience = _borderExperienceToNextLevel;
-            _experienceToNextLevel = _borderExperienceToNextLevel;
+            ExperienceToNextLevel = _borderExperienceToNextLevel;
+        }
+
+        private void Start()
+        {
+            LevelChanged?.Invoke();
+            ExperienceChanged?.Invoke(CurrentExperience, ExperienceToNextLevel);
         }
 
         public void AddExperience(int experience)
         {
-            _currentExperience += experience;
+            CurrentExperience += experience;
 
-            if (_currentExperience >= _experienceToNextLevel)
+            if (CurrentExperience >= ExperienceToNextLevel)
             {
-                _level++;
-                _currentExperience = 0;
+                Level++;
+                CurrentExperience = 0;
 
-                _borderExperienceToNextLevel += _startBorderExperience;
-                _experienceToNextLevel += _borderExperienceToNextLevel;
+                ExperienceToNextLevel += _borderExperienceToNextLevel;
+                
+                LevelChanged?.Invoke();
             }
+            
+            ExperienceChanged?.Invoke(CurrentExperience, ExperienceToNextLevel);
         }
     }
 }

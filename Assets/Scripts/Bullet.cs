@@ -4,12 +4,12 @@ public abstract class Bullet : MonoBehaviour
 {
     private const float TargetYPosition = 1.5f;
     
-    [SerializeField] private float _damage;
+    [SerializeField] private int _damage;
     [SerializeField] private float _speed;
     
     private Transform _target;
 
-    protected float Damage => _damage;
+    protected int Damage => _damage;
     
     private void Update()
     {

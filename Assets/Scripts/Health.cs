@@ -6,14 +6,15 @@ using UnityEngine;
 public abstract class Health : MonoBehaviour
 {
     [SerializeField] private AnimationClip _dieAnimationClip;
-    [SerializeField] private float _maxHealth;
+    [SerializeField] private int _maxHealth;
 
     private Animator _animator;
-    private float _currentHealth;
-    
+
     public event Action Died;
     
     public bool IsDied { get; private set; }
+    public int MaxHealth => _maxHealth;
+    public int CurrentHealth { get; private set; }
 
     protected virtual void Awake()
     {
@@ -30,24 +31,24 @@ public abstract class Health : MonoBehaviour
         ResetValues();
     }
 
-    public void ResetValues()
+    public virtual void ResetValues()
     {
-        _currentHealth = _maxHealth;
+        CurrentHealth = _maxHealth;
     }
     
-    public void TryTakeDamage(float damage)
+    public virtual void TryTakeDamage(int damage)
     {
         if(damage <= 0)
             return;
         
-        _currentHealth -= damage;
+        CurrentHealth -= damage;
         
-        if(_currentHealth > 0)
+        if(CurrentHealth > 0)
             _animator.SetTrigger(AnimatorStates.Hit);
         else
         {
-            _animator.Play(_dieAnimationClip.name);
             IsDied = true;
+            _animator.Play(_dieAnimationClip.name);
             
             StartCoroutine(DieCoroutine());
         }

@@ -4,7 +4,7 @@ namespace Enemy
 {
     public sealed class EnemyCloseAttacker : EnemyAttacker
     {
-        [SerializeField] private float _damage;
+        [SerializeField] private int _damage;
         
         protected override void Attack()
         {
