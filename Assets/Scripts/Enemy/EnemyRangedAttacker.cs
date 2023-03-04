@@ -6,7 +6,12 @@ namespace Enemy
     {
         [SerializeField] private EnemyBullet _enemyBullet;
         [SerializeField] private Transform _bulletSpawnPoint;
-        
+
+        public override void IncreaseDamage()
+        {
+            _enemyBullet.IncreaseDamage();
+        }
+
         protected override void Attack()
         {
             if(Player == null)

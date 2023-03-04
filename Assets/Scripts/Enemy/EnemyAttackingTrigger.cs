@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using GameLogic;
+using Player;
 using UnityEngine;
 
 namespace Enemy

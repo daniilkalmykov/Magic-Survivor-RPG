@@ -2509,6 +2509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dieAnimationClip: {fileID: 7400000, guid: 48511f3269ab33140ad32d856584c98a, type: 3}
   _maxHealth: 120
+  _addingHealthValue: 0
 --- !u!114 &1970616253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2843,7 +2844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de757e6501eb4796b33ce8cb3f8a399c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 25
   _playerHealth: {fileID: 1970616250}
 --- !u!222 &4963628203539098252
 CanvasRenderer:

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameLogic;
+using UnityEngine;
 
 namespace Player
 {
@@ -43,6 +44,11 @@ namespace Player
                 if (IsCoroutineStarted == false)
                     StartCoroutine(WaitTimeBetweenAttacks());
             }
+        }
+
+        public override void IncreaseDamage()
+        {
+            _playerBullet.IncreaseDamage();
         }
 
         protected override void Attack()

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using GameLogic;
 using UnityEngine;
 
 namespace Player
@@ -10,8 +10,6 @@ namespace Player
         private PlayerAttacker _playerAttacker;
         private PlayerMovement _playerMovement;
         private PlayerRotation _playerRotation;
-
-        public event Action<int, int> Changed;
 
         protected override void Awake()
         {
@@ -31,18 +29,6 @@ namespace Player
             _playerRotation.enabled = true;
         }
         
-        public override void TryTakeDamage(int damage)
-        {
-            base.TryTakeDamage(damage);
-            Changed?.Invoke(CurrentHealth, MaxHealth);
-        }
-
-        public override void ResetValues()
-        {
-            base.ResetValues();
-            Changed?.Invoke(CurrentHealth, MaxHealth);
-        }
-
         protected override IEnumerator DieCoroutine()
         {
             _playerAttacker.enabled = false;

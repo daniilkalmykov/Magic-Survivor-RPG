@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using GameLogic;
+using Infrastructure;
 using UnityEngine;
 
 namespace Enemy
@@ -52,8 +54,9 @@ namespace Enemy
 
             if (randomChance > cube.ChanceToCreate)
             {
-                var position = transform.position;
                 const float YPosition = 1;
+                
+                var position = transform.position;
                 Instantiate(cube, new Vector3(position.x, YPosition, position.z), Quaternion.identity, null);
             }
         }
