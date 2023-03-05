@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyBullet : Bullet
+    public sealed class EnemyBullet : Bullet
     {
         protected override void OnCollisionEnter(Collision collision)
         {

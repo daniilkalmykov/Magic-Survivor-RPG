@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class PlayerHealthBar : Bar
+    public sealed class PlayerHealthBar : Bar
     {
         [SerializeField] private PlayerHealth _playerHealth;
         

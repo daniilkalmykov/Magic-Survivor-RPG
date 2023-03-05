@@ -2,7 +2,7 @@
 
 namespace GameLogic
 {
-    public class Timer
+    public sealed class Timer
     {
         private const int SecondsInMinute = 60;
 

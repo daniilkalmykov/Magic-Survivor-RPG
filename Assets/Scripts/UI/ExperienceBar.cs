@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class ExperienceBar : Bar
+    public sealed class ExperienceBar : Bar
     {
         [SerializeField] private TMP_Text _level;
         [SerializeField] private TMP_Text _experience;

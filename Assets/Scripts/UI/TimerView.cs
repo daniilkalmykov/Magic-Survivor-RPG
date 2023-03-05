@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UI
 {
     [RequireComponent(typeof(TMP_Text))]
-    public class TimerView : MonoBehaviour
+    public sealed class TimerView : MonoBehaviour
     {
         private TMP_Text _time;
         private Timer _timer;
