@@ -5,15 +5,21 @@ namespace Infrastructure
     public abstract class Bullet : MonoBehaviour
     {
         private const float TargetYPosition = 1.5f;
-    
+
         [SerializeField] private int _damage;
         [SerializeField] private int _addingDamage;
         [SerializeField] private float _speed;
     
+        private int _startDamage;
         private Transform _target;
 
         protected int Damage => _damage;
-    
+
+        private void OnValidate()
+        {
+            _startDamage = _damage;
+        }
+
         private void Update()
         {
             if(_target.gameObject.activeSelf == false || _target == null)
@@ -38,6 +44,11 @@ namespace Infrastructure
         public void IncreaseDamage()
         {
             _damage += _addingDamage;
+        }
+
+        public void ResetDamage()
+        {
+            _damage = _startDamage;
         }
     }
 }

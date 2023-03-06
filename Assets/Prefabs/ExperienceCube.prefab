@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead2281608f45d1b768c6f84d3728ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chanceToCreate: 50
-  _experience: 10
+  _chanceToCreate: 0
+  _experience: 1000

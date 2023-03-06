@@ -15,6 +15,9 @@ namespace GameLogic
         [SerializeField] private int _choosingUpgradedCardsCount;
         [SerializeField] private PlayerExperience _playerExperience;
         [SerializeField] private Image _upgradedCardsPanel;
+        [SerializeField] private PlayerAttacker _playerAttacker;
+        [SerializeField] private PlayerHealth _playerHealth;
+        [SerializeField] private PlayerMovement _playerMovement;
 
         private readonly List<UpgradedCard> _generatedCards = new();
 
@@ -25,7 +28,17 @@ namespace GameLogic
             for (var i = 0; i < _upgradedCards.Count; i++)
             {
                 Init(_upgradedCards[i], _upgradedCardsPanel.transform);
-                GetUpgradedCard(i).SetId(i);
+
+                var card = GetUpgradedCard(i);
+
+                if (card.TryGetComponent(out IPlayerAttackerUpgradedCard playerAttackerUpgradedCard))
+                    playerAttackerUpgradedCard.Init(_playerAttacker);
+                else if (card.TryGetComponent(out HealthUpgradedCard healthUpgradedCard))
+                    healthUpgradedCard.Init(_playerHealth);
+                else if (card.TryGetComponent(out MovementSpeedUpgradedCard movementSpeedUpgradedCard))
+                    movementSpeedUpgradedCard.Init(_playerMovement);
+                else
+                    throw new ArgumentNullException();
             }
         }
 
@@ -90,15 +103,14 @@ namespace GameLogic
                 throw new ArgumentNullException();
 
             chosenCard.UpgradeLevel();
-            //here will be player buffs
 
             foreach (var card in _generatedCards)
             {
                 card.MakeNonChosen();
                 card.gameObject.SetActive(false);
-                
-                _generatedCards.Remove(card);
             }
+            
+            _generatedCards.Clear();
         }
 
         private void SetCardToChoose(UpgradedCard upgradedCard)

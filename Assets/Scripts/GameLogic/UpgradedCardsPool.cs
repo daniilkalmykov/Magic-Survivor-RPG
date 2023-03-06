@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Infrastructure.UpgradedCards;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GameLogic
 {
@@ -21,6 +22,12 @@ namespace GameLogic
 
         protected bool TryGetUpgradedCardToChoose(out UpgradedCard upgradedCard, List<UpgradedCard> cardsToChoose)
         {
+            for (var i = _pool.Count - 1; i >= 1; i--)
+            {
+                var randomNumber = Random.Range(0, i + 1);
+                (_pool[randomNumber], _pool[i]) = (_pool[i], _pool[randomNumber]);
+            }
+            
             upgradedCard = _pool.FirstOrDefault(card =>
                 card.gameObject.activeSelf == false && cardsToChoose.Contains(card) == false);
 

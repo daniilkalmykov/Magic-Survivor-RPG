@@ -425,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dieAnimationClip: {fileID: 7400000, guid: d3aad3207f5c7984a878d6d3e713003f, type: 2}
   _maxHealth: 250
+  _addingHealthValue: 0
   _experienceCubes:
   - {fileID: 5138764607067884772, guid: 2d9ab00aa7944cb48a825e68a8cee5db, type: 3}
 --- !u!114 &-948490183358756487
@@ -439,10 +440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3653afaff37445caa43f566850b24e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 4
+  _attackDistance: 3
   _delay: 5
   _enemyAttackingTrigger: {fileID: 1246030895232576154}
   _damage: 50
+  _addingDamage: 0
 --- !u!114 &4103300098068599496
 MonoBehaviour:
   m_ObjectHideFlags: 0

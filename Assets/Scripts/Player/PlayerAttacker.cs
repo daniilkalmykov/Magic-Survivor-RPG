@@ -31,6 +31,7 @@ namespace Player
         private void Start()
         {
             _playerAttackingTrigger.Init(AttackDistance);
+            _playerBullet.ResetDamage();
         }
 
         private void Update()
@@ -50,7 +51,7 @@ namespace Player
         {
             _playerBullet.IncreaseDamage();
         }
-
+        
         protected override void Attack()
         {
             if(_enemy == null)

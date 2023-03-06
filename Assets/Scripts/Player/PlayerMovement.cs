@@ -6,6 +6,7 @@ namespace Player
     public sealed class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _movementSpeed;
+        [SerializeField] private float _addingMovementSpeed;
         
         private Rigidbody _rigidbody;
         private Animator _animator;
@@ -25,6 +26,11 @@ namespace Player
         {
             _rigidbody.velocity = new Vector3(directionX * _movementSpeed, _rigidbody.velocity.y,
                 directionZ * _movementSpeed);
+        }
+
+        public void IncreaseMovementSpeed()
+        {
+            _movementSpeed += _addingMovementSpeed;
         }
     }
 }

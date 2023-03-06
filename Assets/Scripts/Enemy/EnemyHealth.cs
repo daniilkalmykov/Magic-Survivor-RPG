@@ -52,13 +52,13 @@ namespace Enemy
             
             var cube = _experienceCubes[randomExperienceCubeNumber];
 
-            if (randomChance > cube.ChanceToCreate)
-            {
-                const float YPosition = 1;
+            if (randomChance >= cube.ChanceToCreate) 
+                return;
+            
+            const float YPosition = 1;
                 
-                var position = transform.position;
-                Instantiate(cube, new Vector3(position.x, YPosition, position.z), Quaternion.identity, null);
-            }
+            var position = transform.position;
+            Instantiate(cube, new Vector3(position.x, YPosition, position.z), Quaternion.identity, null);
         }
     }
 }

@@ -915,7 +915,7 @@ Transform:
   m_GameObject: {fileID: 956002702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 11.1}
-  m_LocalScale: {x: 128, y: 1, z: 128}
+  m_LocalScale: {x: 290, y: 1, z: 128}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 114399659}
@@ -1572,6 +1572,109 @@ Transform:
   m_Father: {fileID: 300381898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1472992488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1472992489}
+  - component: {fileID: 1472992491}
+  - component: {fileID: 1472992490}
+  - component: {fileID: 1472992492}
+  m_Layer: 5
+  m_Name: UpgradedCards Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1472992489
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472992488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1896809673}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1472992490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472992488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.57254905}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1472992491
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472992488}
+  m_CullTransparentMesh: 1
+--- !u!114 &1472992492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472992488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 395
+    m_Right: 0
+    m_Top: 890
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1798343900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +2013,7 @@ RectTransform:
   - {fileID: 1863795800}
   - {fileID: 1005571033}
   - {fileID: 4963628202373578607}
+  - {fileID: 1472992489}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2336,6 +2440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 5
+  _addingMovementSpeed: 0
 --- !u!114 &1970616245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,6 +2483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDistance: 7
   _delay: 1
+  _delayReducingValue: 0
   _playerAttackingTrigger: {fileID: 564426860}
   _playerBullet: {fileID: 2080891948286175720, guid: 512889babb76ef043b8a6d4245cc01fb, type: 3}
   _bulletSpawnPoint: {fileID: 613119741}
@@ -2394,7 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dieAnimationClip: {fileID: 7400000, guid: 48511f3269ab33140ad32d856584c98a, type: 3}
-  _maxHealth: 120
+  _maxHealth: 10000
   _addingHealthValue: 0
 --- !u!114 &1970616253
 MonoBehaviour:
@@ -2525,6 +2631,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 674969043}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2109680714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2109680716}
+  - component: {fileID: 2109680715}
+  m_Layer: 0
+  m_Name: UpgradedCardsGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2109680715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109680714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf16d8cb94ce3d468c15ab60c314086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradedCards:
+  - {fileID: -1453035289835683737, guid: a3950df6e564feb4e8d86263636306fc, type: 3}
+  - {fileID: 9139129440919809742, guid: 402050dd4cc598d4982798996916093f, type: 3}
+  - {fileID: -6084219951213743799, guid: 173fc5bf7f8924f4998157371077a75f, type: 3}
+  - {fileID: 2924872179397252136, guid: 1a3542f812fa18643852ef597ff0da64, type: 3}
+  _choosingUpgradedCardsCount: 3
+  _playerExperience: {fileID: 1970616253}
+  _upgradedCardsPanel: {fileID: 1472992490}
+  _playerAttacker: {fileID: 1970616247}
+  _playerHealth: {fileID: 1970616250}
+  _playerMovement: {fileID: 1970616244}
+--- !u!4 &2109680716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109680714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 130.18306, y: 626.5552, z: 1.5534534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118658170
 GameObject:

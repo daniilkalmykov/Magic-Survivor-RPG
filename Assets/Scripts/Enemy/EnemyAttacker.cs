@@ -20,7 +20,7 @@ namespace Enemy
             _animator = GetComponent<Animator>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             if (Player.TryGetComponent(out PlayerHealth playerHealth))
                 PlayerHealth = playerHealth;

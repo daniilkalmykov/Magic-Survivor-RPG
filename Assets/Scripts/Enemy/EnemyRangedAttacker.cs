@@ -7,6 +7,12 @@ namespace Enemy
         [SerializeField] private EnemyBullet _enemyBullet;
         [SerializeField] private Transform _bulletSpawnPoint;
 
+        protected override void Start()
+        {
+            base.Start();
+            _enemyBullet.ResetDamage();
+        }
+
         public override void IncreaseDamage()
         {
             _enemyBullet.IncreaseDamage();
