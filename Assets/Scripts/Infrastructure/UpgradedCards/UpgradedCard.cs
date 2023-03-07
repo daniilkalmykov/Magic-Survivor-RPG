@@ -1,15 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Infrastructure.UpgradedCards
 {
     public abstract class UpgradedCard : MonoBehaviour
     {
-        public event Action<int> LevelChanged;
-        
         public bool IsChosen { get; private set; }
         
-        protected int Level { get; private set; }
+        public int Level { get; private set; }
         
         public void MakeChosen()
         {
@@ -24,7 +21,6 @@ namespace Infrastructure.UpgradedCards
         public virtual void UpgradeLevel()
         {
             Level++;
-            LevelChanged?.Invoke(Level);
         }
     }
 }

@@ -15,15 +15,17 @@ namespace GameLogic
         protected bool CanAttack { get; private set; }
         protected float AttackDistance => _attackDistance;
 
-        public void ReduceDelay()
+        public void ReduceDelay(int level)
         {
-            _delay -= _delayReducingValue;
+            _delay -= _delayReducingValue * level;
 
             if (_delay <= 0)
                 _delay = MinDelay;
         }
-        
-        public abstract void IncreaseDamage();
+
+        public virtual void IncreaseDamage() { }
+
+        public virtual void IncreaseDamage(int level) { }
         
         protected IEnumerator WaitTimeBetweenAttacks()
         {

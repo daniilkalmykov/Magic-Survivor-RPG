@@ -45,6 +45,11 @@ namespace Infrastructure
         {
             _damage += _addingDamage;
         }
+        
+        public void IncreaseDamage(int level)
+        {
+            _damage += _addingDamage * level;
+        }
 
         public void ResetDamage()
         {

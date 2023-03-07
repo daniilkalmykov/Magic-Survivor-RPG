@@ -8,10 +8,10 @@ namespace Enemy
     {
         protected override void OnCollisionEnter(Collision collision)
         {
-            base.OnCollisionEnter(collision);
-            
             if (collision.gameObject.TryGetComponent(out PlayerHealth playerHealth))
                 playerHealth.TryTakeDamage(Damage);
+
+            base.OnCollisionEnter(collision);
         }
     }
 }

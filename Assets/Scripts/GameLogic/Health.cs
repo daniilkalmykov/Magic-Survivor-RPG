@@ -67,6 +67,12 @@ namespace GameLogic
             ResetValues();
         }
 
+        public void Increase(int level)
+        {
+            _maxHealth += _addingHealthValue * level;
+            ResetValues();
+        }
+
         protected virtual void Die()
         {
             Died?.Invoke();

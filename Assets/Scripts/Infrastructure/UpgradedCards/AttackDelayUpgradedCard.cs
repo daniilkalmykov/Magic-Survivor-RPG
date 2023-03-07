@@ -14,7 +14,7 @@ namespace Infrastructure.UpgradedCards
         public override void UpgradeLevel()
         {
             base.UpgradeLevel();
-            PlayerAttacker.ReduceDelay();
+            PlayerAttacker.ReduceDelay(Level);
         }
     }
 }

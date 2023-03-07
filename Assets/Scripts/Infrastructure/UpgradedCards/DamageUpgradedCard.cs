@@ -14,7 +14,7 @@ namespace Infrastructure.UpgradedCards
         public override void UpgradeLevel()
         {
             base.UpgradeLevel();
-            PlayerAttacker.IncreaseDamage();
+            PlayerAttacker.IncreaseDamage(Level);
         }
     }
 }

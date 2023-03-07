@@ -18,6 +18,8 @@ namespace GameLogic
         [SerializeField] private PlayerAttacker _playerAttacker;
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private PlayerMovement _playerMovement;
+        [SerializeField] private PlayerDeadZone _playerDeadZone;
+        [SerializeField] private PlayerPoisonBullet _playerPoisonBullet;
 
         private readonly List<UpgradedCard> _generatedCards = new();
 
@@ -37,6 +39,10 @@ namespace GameLogic
                     healthUpgradedCard.Init(_playerHealth);
                 else if (card.TryGetComponent(out MovementSpeedUpgradedCard movementSpeedUpgradedCard))
                     movementSpeedUpgradedCard.Init(_playerMovement);
+                else if (card.TryGetComponent(out IPlayerDeadZoneUpgradedCard playerDeadZoneUpgradedCard))
+                    playerDeadZoneUpgradedCard.Init(_playerDeadZone);
+                else if (card.TryGetComponent(out IPoisonUpgradedCard poisonUpgradedCard))
+                    poisonUpgradedCard.Init(_playerPoisonBullet);
                 else
                     throw new ArgumentNullException();
             }

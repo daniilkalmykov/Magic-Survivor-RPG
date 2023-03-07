@@ -25,15 +25,13 @@ namespace UI
         private void OnEnable()
         {
             _button.onClick.AddListener(OnClick);
-
-            _upgradedCard.LevelChanged += OnLevelChanged;
+            
+            _level.text = _upgradedCard.Level.ToString();
         }
 
         private void OnDisable()
         {
             _button.onClick.RemoveListener(OnClick);
-            
-            _upgradedCard.LevelChanged -= OnLevelChanged;
         }
         
         private void OnClick()
@@ -41,11 +39,6 @@ namespace UI
             _upgradedCard.MakeChosen();
             
             Chose?.Invoke();
-        }
-
-        private void OnLevelChanged(int level)
-        {
-            _level.text = level.ToString();
         }
     }
 }
