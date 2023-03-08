@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Infrastructure.UpgradedCards;
+using Infrastructure.UpgradedCards.Interfaces;
+using Infrastructure.UpgradedCards.StatsCards;
 using Player;
 using UI;
 using UnityEngine;

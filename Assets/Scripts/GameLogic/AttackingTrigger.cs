@@ -25,7 +25,17 @@ namespace GameLogic
             _capsuleCollider.radius = radius;
         }
 
-        protected virtual void OnDied()
+        public void SetStartRadius()
+        {
+            _capsuleCollider.radius = 0;
+        }
+
+        public void SetInitRadius()
+        {
+            _capsuleCollider.radius = _radius;
+        }
+        
+        protected void OnDied()
         {
             IsOpponentInTrigger = false;
         }
@@ -39,18 +49,9 @@ namespace GameLogic
         {
             IsOpponentInTrigger = false;
         }
-
-        protected void SetStartRadius()
-        {
-            _capsuleCollider.radius = 0;
-        }
-
-        protected void SetInitRadius()
-        {
-            _capsuleCollider.radius = _radius;
-        }
-
+        
         protected abstract void OnTriggerEnter(Collider other);
+        
         protected abstract void OnTriggerExit(Collider other);
     }
 }

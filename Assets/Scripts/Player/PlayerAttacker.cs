@@ -1,4 +1,6 @@
-﻿using GameLogic;
+﻿using System.Collections;
+using GameLogic;
+using Infrastructure;
 using UnityEngine;
 
 namespace Player
@@ -19,14 +21,9 @@ namespace Player
         private Transform _enemy;
         private int _currentAttacksCountToShootPoisonBullet;
 
-        public PlayerPoisonBullet PlayerPoisonBullet => _playerPoisonBullet;
-
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            
-            _playerPoisonBullet.Poison.ResetValues();
-            _playerPoisonBullet.Deactivate();
         }
 
         private void OnEnable()
@@ -42,7 +39,12 @@ namespace Player
         private void Start()
         {
             _playerAttackingTrigger.Init(AttackDistance);
+            
             _playerBullet.ResetDamage();
+            
+            _playerPoisonBullet.Deactivate();
+            _playerPoisonBullet.ResetDamage();
+            _playerPoisonBullet.Poison.ResetValues();
         }
 
         private void Update()
@@ -58,16 +60,21 @@ namespace Player
             }
         }
 
-        public override void IncreaseDamage(int level)
+        public override void IncreaseDamage()
         {
-            _playerBullet.IncreaseDamage(level);
+            _playerBullet.IncreaseDamage();
+        }
+
+        public void IncreasePoisonBulletDamage()
+        {
+            _playerPoisonBullet.IncreaseDamage();
         }
 
         public void ReduceAttacksCountToShootPoisonBullet()
         {
             _attacksCountToShootPoisonBullet -= _reducingAttacksCountToShootPoisonBullet;
 
-            if (_attacksCountToShootPoisonBullet <= 0)
+            if (_attacksCountToShootPoisonBullet <= MinAttacksCountToShootPoisonBullet)
                 _attacksCountToShootPoisonBullet = MinAttacksCountToShootPoisonBullet;
         }
         
@@ -75,34 +82,49 @@ namespace Player
         {
             if(_enemy == null)
                 return;
-            
-            if(_currentAttacksCountToShootPoisonBullet < _attacksCountToShootPoisonBullet)
+
+            if (_currentAttacksCountToShootPoisonBullet < _attacksCountToShootPoisonBullet) 
             {
-                var newBullet = Instantiate(_playerBullet, _bulletSpawnPoint);
-                newBullet.Init(_enemy);
-                newBullet.transform.SetParent(null);
+                SpawnBullet(_playerBullet);
+                _currentAttacksCountToShootPoisonBullet++;
             }
             else
             {
                 if (_playerPoisonBullet.IsActivated)
-                {
-                    var newPoisonBulletBullet = Instantiate(_playerPoisonBullet, _bulletSpawnPoint);
-                    newPoisonBulletBullet.Init(_enemy);
-                    newPoisonBulletBullet.transform.SetParent(null);
-                }
+                    SpawnBullet(_playerPoisonBullet);
 
                 _currentAttacksCountToShootPoisonBullet = 0;
             }
 
-            _currentAttacksCountToShootPoisonBullet++;
             SwitchAttackStateToFalse();
                         
             _animator.SetTrigger(AnimatorStates.Attack);
+        }
+
+        private void SpawnBullet(Bullet bullet)
+        {
+            var newBullet = Instantiate(bullet, _bulletSpawnPoint);
+            newBullet.Init(_enemy);
+            newBullet.transform.SetParent(null);
         }
         
         private void OnEnemyDetected(Transform enemy)
         {
             _enemy = enemy;
+        }
+
+        protected override IEnumerator WaitTimeBetweenAttacks()
+        {
+            _playerAttackingTrigger.SetStartRadius();
+            
+            SwitchCoroutineStartedStateToTrue();
+            
+            yield return new WaitForSeconds(Delay);
+            SwitchAttackStateToTrue();
+
+            SwitchCoroutineStatedStateToFalse();
+            
+            _playerAttackingTrigger.SetInitRadius();
         }
     }
 }

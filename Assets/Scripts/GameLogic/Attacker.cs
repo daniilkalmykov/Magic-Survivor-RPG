@@ -14,20 +14,19 @@ namespace GameLogic
         protected bool IsCoroutineStarted { get; private set; }
         protected bool CanAttack { get; private set; }
         protected float AttackDistance => _attackDistance;
+        protected float Delay => _delay;
 
-        public void ReduceDelay(int level)
+        public void ReduceDelay()
         {
-            _delay -= _delayReducingValue * level;
+            _delay -= _delayReducingValue;
 
             if (_delay <= 0)
                 _delay = MinDelay;
         }
 
-        public virtual void IncreaseDamage() { }
+        public abstract void IncreaseDamage();
 
-        public virtual void IncreaseDamage(int level) { }
-        
-        protected IEnumerator WaitTimeBetweenAttacks()
+        protected virtual IEnumerator WaitTimeBetweenAttacks()
         {
             IsCoroutineStarted = true;
             
@@ -40,6 +39,21 @@ namespace GameLogic
         protected void SwitchAttackStateToFalse()
         {
             CanAttack = false;
+        }
+
+        protected void SwitchAttackStateToTrue()
+        {
+            CanAttack = true;
+        }
+
+        protected void SwitchCoroutineStartedStateToTrue()
+        {
+            IsCoroutineStarted = true;
+        }
+
+        protected void SwitchCoroutineStatedStateToFalse()
+        {
+            IsCoroutineStarted = false;
         }
     
         protected abstract void Attack();

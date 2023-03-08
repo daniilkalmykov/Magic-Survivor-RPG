@@ -7,27 +7,17 @@ namespace GameLogic
 {
     public sealed class Poison : MonoBehaviour
     {
-        private const float MinDelay = 0.1f;
-        
         [SerializeField] private int _damage;
         [SerializeField] private int _ticksCount;
         [SerializeField] private float _delay;
         [SerializeField] private int _addingDamage;
         [SerializeField] private int _addingTicksCount;
-        [SerializeField] private float _reducingDelay;
+        [SerializeField]private int _startDamage;
+        [SerializeField] private float _startDelay;
+        [SerializeField] private int _startTicksCount;
 
-        private int _startDamage;
-        private float _startDelay;
-        private int _startTicksCount;
         
         private EnemyHealth _enemyHealth;
-
-        private void OnValidate()
-        {
-            _startDamage = _damage;
-            _startDelay = _delay;
-            _startTicksCount = _ticksCount;
-        }
 
         private void Start()
         {
@@ -47,14 +37,6 @@ namespace GameLogic
         public void IncreaseTicksCount()
         {
             _addingDamage += _addingTicksCount;
-        }
-
-        public void ReduceDelay(int level)
-        {
-            _delay -= _reducingDelay * level;
-
-            if (_delay <= 0)
-                _delay = MinDelay;
         }
 
         public void ResetValues()

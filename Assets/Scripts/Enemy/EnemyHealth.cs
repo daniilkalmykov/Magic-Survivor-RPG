@@ -52,7 +52,7 @@ namespace Enemy
             
             var cube = _experienceCubes[randomExperienceCubeNumber];
 
-            if (randomChance >= cube.ChanceToCreate) 
+            if (randomChance >= cube.ChanceToCreate && randomChance != 0) 
                 return;
             
             const float YPosition = 1;

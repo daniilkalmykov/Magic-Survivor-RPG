@@ -9,16 +9,11 @@ namespace Infrastructure
         [SerializeField] private int _damage;
         [SerializeField] private int _addingDamage;
         [SerializeField] private float _speed;
+        [SerializeField] private int _startDamage;
     
-        private int _startDamage;
         private Transform _target;
 
         protected int Damage => _damage;
-
-        private void OnValidate()
-        {
-            _startDamage = _damage;
-        }
 
         private void Update()
         {
@@ -46,14 +41,10 @@ namespace Infrastructure
             _damage += _addingDamage;
         }
         
-        public void IncreaseDamage(int level)
-        {
-            _damage += _addingDamage * level;
-        }
-
         public void ResetDamage()
         {
-            _damage = _startDamage;
+            if (_startDamage < _damage && _startDamage != 0)
+                _damage = _startDamage;
         }
     }
 }

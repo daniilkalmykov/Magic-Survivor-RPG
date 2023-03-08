@@ -28,9 +28,9 @@ namespace Player
                 directionZ * _movementSpeed);
         }
 
-        public void IncreaseMovementSpeed(int level)
+        public void IncreaseMovementSpeed()
         {
-            _movementSpeed += _addingMovementSpeed * level;
+            _movementSpeed += _addingMovementSpeed;
         }
     }
 }

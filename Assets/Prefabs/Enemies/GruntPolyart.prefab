@@ -168,9 +168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dieAnimationClip: {fileID: 7400000, guid: 8cf19caeee9bb3c43a09d57a2a2ba09d, type: 2}
   _maxHealth: 120
-  _addingHealthValue: 0
+  _addingHealthValue: 20
   _experienceCubes:
   - {fileID: 5138764607067884772, guid: 2d9ab00aa7944cb48a825e68a8cee5db, type: 3}
+  - {fileID: 5138764607067884772, guid: 40b984364e2f6c544a0fbaed636d9225, type: 3}
+  - {fileID: 5138764607067884772, guid: 029225303e3ba374d99798b865bab333, type: 3}
 --- !u!114 &661211192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,9 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDistance: 2
   _delay: 3
+  _delayReducingValue: 0
   _enemyAttackingTrigger: {fileID: 7892467275410503306}
   _damage: 30
-  _addingDamage: 0
+  _addingDamage: 10
 --- !u!114 &661211191
 MonoBehaviour:
   m_ObjectHideFlags: 0

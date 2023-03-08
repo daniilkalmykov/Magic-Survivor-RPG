@@ -4,9 +4,8 @@ namespace Infrastructure.UpgradedCards
 {
     public abstract class UpgradedCard : MonoBehaviour
     {
-        public bool IsChosen { get; private set; }
-        
         public int Level { get; private set; }
+        public bool IsChosen { get; private set; }
         
         public void MakeChosen()
         {
