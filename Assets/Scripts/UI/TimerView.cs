@@ -18,7 +18,7 @@ namespace UI
 
         private void Update()
         {
-            _timer.Update(Time.deltaTime * 10);
+            _timer.Update(Time.deltaTime);
 
             _time.text = _timer.Seconds.ToString().Length == 1
                 ? $"{_timer.Minutes} : 0{_timer.Seconds}"
