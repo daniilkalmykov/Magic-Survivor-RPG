@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GameLogic;
+using UI;
 using UnityEngine;
 
 namespace Player
@@ -7,6 +8,8 @@ namespace Player
     [RequireComponent(typeof(PlayerMovement), typeof(PlayerRotation), typeof(PlayerAttacker))]
     public sealed class PlayerHealth : Health
     {
+        [SerializeField] private DeathPanel _deathPanel;
+        
         private PlayerAttacker _playerAttacker;
         private PlayerMovement _playerMovement;
         private PlayerRotation _playerRotation;
@@ -18,6 +21,8 @@ namespace Player
             _playerAttacker = GetComponent<PlayerAttacker>();
             _playerMovement = GetComponent<PlayerMovement>();
             _playerRotation = GetComponent<PlayerRotation>();
+
+            _deathPanel.gameObject.SetActive(false);
         }
 
         protected override void OnEnable()
@@ -36,6 +41,12 @@ namespace Player
             _playerRotation.enabled = false;
             
             return base.DieCoroutine();
+        }
+
+        protected override void Die()
+        {
+            base.Die();
+            _deathPanel.gameObject.SetActive(true);
         }
     }
 }
