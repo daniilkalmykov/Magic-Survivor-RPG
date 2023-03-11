@@ -4,14 +4,14 @@ using UnityEngine.SceneManagement;
 
 namespace UI
 {
-    public sealed class RestartButton : GameButton
+    public sealed class PlayButton : GameButton
     {
         protected override void OnClick()
         {
-            Restart();
+            Play();
         }
 
-        private void Restart()
+        private void Play()
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(ScenesNames.Level);

@@ -1,3 +1,6 @@
+using Constants;
+using UnityEngine.SceneManagement;
+
 namespace UI
 {
     public sealed class MainMenuButton : GameButton
@@ -9,7 +12,7 @@ namespace UI
 
         private void LoadMainMenuScene()
         {
-            
+            SceneManager.LoadScene(ScenesNames.MainMenu);
         }
     }
 }
