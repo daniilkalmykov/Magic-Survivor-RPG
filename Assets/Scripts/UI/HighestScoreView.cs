@@ -16,9 +16,7 @@ namespace UI
 
         private void Start()
         {
-            _score.text = Timer.ScoreSeconds.ToString().Length == 1
-                ? $"{Timer.ScoreMinutes} : 0{Timer.ScoreSeconds}"
-                : $"{Timer.ScoreMinutes} : {Timer.ScoreSeconds}";
+            _score.text = Timer.ScoreText;
         }
     }
 }

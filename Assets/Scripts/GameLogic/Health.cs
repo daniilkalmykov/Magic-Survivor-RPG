@@ -74,6 +74,15 @@ namespace GameLogic
             ResetValues();
         }
 
+        public void IncreaseByBooster(int value)
+        {
+            if (value <= 0)
+                throw new ArgumentNullException();
+
+            _maxHealth += value;
+            ResetValues();
+        }
+
         protected virtual void Die()
         {
             Died?.Invoke();

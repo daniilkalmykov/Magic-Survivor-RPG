@@ -1,4 +1,6 @@
 ﻿using System;
+using Constants;
+using UnityEngine;
 
 namespace GameLogic
 {
@@ -8,9 +10,10 @@ namespace GameLogic
         
         private float _time;
         private float _highestScore;
-
-        public static int ScoreSeconds { get; private set; }
-        public static int ScoreMinutes { get; private set; }
+        private int _scoreSeconds;
+        private int _scoreMinutes;
+        
+        public static string ScoreText { get; private set; }
         
         public int Minutes { get; private set; }
         public int Seconds { get; private set; }
@@ -28,8 +31,15 @@ namespace GameLogic
                 return;
             
             _highestScore = _time;
-            ScoreSeconds = Seconds;
-            ScoreMinutes = Minutes;
+            _scoreSeconds = Seconds;
+            _scoreMinutes = Minutes;
+            
+            ScoreText = _scoreSeconds.ToString().Length == 1
+                ? $"{_scoreMinutes} : 0{_scoreSeconds}"
+                : $"{_scoreMinutes} : {_scoreSeconds}";
+
+            PlayerPrefs.SetString(PlayerPrefsConstants.Record, ScoreText);
+            PlayerPrefs.Save();
         }
     }
 }
