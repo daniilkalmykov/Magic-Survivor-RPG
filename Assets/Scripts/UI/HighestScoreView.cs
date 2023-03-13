@@ -1,4 +1,4 @@
-using GameLogic;
+using Constants;
 using TMPro;
 using UnityEngine;
 
@@ -14,9 +14,9 @@ namespace UI
             _score = GetComponent<TMP_Text>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            _score.text = Timer.ScoreText;
+            _score.text = PlayerPrefs.GetString(PlayerPrefsConstants.Record);
         }
     }
 }

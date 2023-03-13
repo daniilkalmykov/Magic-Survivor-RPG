@@ -7,13 +7,13 @@ namespace GameLogic
     public sealed class Timer
     {
         private const int SecondsInMinute = 60;
+            
+        private static string s_scoreText;
         
         private float _time;
         private float _highestScore;
         private int _scoreSeconds;
         private int _scoreMinutes;
-        
-        public static string ScoreText { get; private set; }
         
         public int Minutes { get; private set; }
         public int Seconds { get; private set; }
@@ -34,11 +34,11 @@ namespace GameLogic
             _scoreSeconds = Seconds;
             _scoreMinutes = Minutes;
             
-            ScoreText = _scoreSeconds.ToString().Length == 1
+            s_scoreText = _scoreSeconds.ToString().Length == 1
                 ? $"{_scoreMinutes} : 0{_scoreSeconds}"
                 : $"{_scoreMinutes} : {_scoreSeconds}";
 
-            PlayerPrefs.SetString(PlayerPrefsConstants.Record, ScoreText);
+            PlayerPrefs.SetString(PlayerPrefsConstants.Record, s_scoreText);
             PlayerPrefs.Save();
         }
     }

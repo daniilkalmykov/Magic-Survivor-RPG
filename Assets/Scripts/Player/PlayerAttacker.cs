@@ -66,11 +66,6 @@ namespace Player
             _playerBullet.IncreaseDamage();
         }
 
-        public void IncreasePoisonBulletDamage()
-        {
-            _playerPoisonBullet.IncreaseDamage();
-        }
-
         public void ReduceAttacksCountToShootPoisonBullet()
         {
             _attacksCountToShootPoisonBullet -= _reducingAttacksCountToShootPoisonBullet;

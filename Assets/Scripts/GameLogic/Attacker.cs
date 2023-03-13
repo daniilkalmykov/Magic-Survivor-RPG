@@ -24,6 +24,14 @@ namespace GameLogic
                 _delay = MinDelay;
         }
 
+        public void TryIncreaseAttackDistance(float value)
+        {
+            if (value <= 0)
+                return;
+            
+            _attackDistance += value;
+        }
+
         public abstract void IncreaseDamage();
 
         protected virtual IEnumerator WaitTimeBetweenAttacks()

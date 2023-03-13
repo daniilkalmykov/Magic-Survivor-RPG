@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Agava.YandexGames;
 using GameLogic;
 using UI;
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace Player
             
             return base.DieCoroutine();
         }
-
+        
         protected override void Die()
         {
             base.Die();

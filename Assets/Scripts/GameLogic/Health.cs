@@ -74,7 +74,7 @@ namespace GameLogic
             ResetValues();
         }
 
-        public void IncreaseByBooster(int value)
+        public void TryIncrease(int value)
         {
             if (value <= 0)
                 throw new ArgumentNullException();
