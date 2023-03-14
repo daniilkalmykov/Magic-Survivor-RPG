@@ -1,7 +1,8 @@
+using UI.Panels;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Buttons
 {
     [RequireComponent(typeof(Button))]
     public sealed class PauseButton : GameButton

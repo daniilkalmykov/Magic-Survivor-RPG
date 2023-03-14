@@ -2,7 +2,7 @@ using Constants;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace UI.Buttons
 {
     public sealed class RestartButton : GameButton
     {

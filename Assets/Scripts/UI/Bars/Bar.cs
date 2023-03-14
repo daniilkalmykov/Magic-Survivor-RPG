@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Bars
 {
     [RequireComponent(typeof(Slider))]
     public abstract class Bar : MonoBehaviour

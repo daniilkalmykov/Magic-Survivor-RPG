@@ -2,6 +2,7 @@
 using Agava.YandexGames;
 using GameLogic;
 using UI;
+using UI.Panels;
 using UnityEngine;
 
 namespace Player

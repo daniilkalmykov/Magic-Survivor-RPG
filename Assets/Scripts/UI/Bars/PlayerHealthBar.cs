@@ -1,7 +1,7 @@
 ﻿using Player;
 using UnityEngine;
 
-namespace UI
+namespace UI.Bars
 {
     public sealed class PlayerHealthBar : Bar
     {

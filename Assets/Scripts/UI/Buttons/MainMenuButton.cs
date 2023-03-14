@@ -1,7 +1,7 @@
 using Constants;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace UI.Buttons
 {
     public sealed class MainMenuButton : GameButton
     {

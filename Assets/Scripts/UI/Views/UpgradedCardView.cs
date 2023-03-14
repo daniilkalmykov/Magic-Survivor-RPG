@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Views
 {
     [RequireComponent(typeof(UpgradedCard), typeof(Button))]
     public sealed class UpgradedCardView : MonoBehaviour

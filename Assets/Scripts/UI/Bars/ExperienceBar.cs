@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Bars
 {
     public sealed class ExperienceBar : Bar
     {

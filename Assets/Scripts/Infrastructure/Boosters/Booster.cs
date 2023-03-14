@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using UI;
+using UI.Panels;
 using UnityEngine;
 using UnityEngine.UI;
 

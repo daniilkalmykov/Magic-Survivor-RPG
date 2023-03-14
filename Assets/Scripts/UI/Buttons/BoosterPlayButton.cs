@@ -1,6 +1,7 @@
+using UI.Panels;
 using UnityEngine;
 
-namespace UI
+namespace UI.Buttons
 {
     public class BoosterPlayButton : GameButton
     {
@@ -13,6 +14,7 @@ namespace UI
 
         private void Play()
         {
+            Time.timeScale = 1;
             _boostersPanel.gameObject.SetActive(false);
         }
     }

@@ -1,6 +1,7 @@
+using UI.Panels;
 using UnityEngine;
 
-namespace UI
+namespace UI.Buttons
 {
     public sealed class PausePanelPlayButton : GameButton
     {

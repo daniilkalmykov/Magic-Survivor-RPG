@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Buttons
 {
     public sealed class ExitButton : GameButton
     {

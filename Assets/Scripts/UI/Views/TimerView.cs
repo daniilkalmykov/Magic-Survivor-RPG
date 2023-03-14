@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Views
 {
     [RequireComponent(typeof(TMP_Text))]
     public sealed class TimerView : MonoBehaviour

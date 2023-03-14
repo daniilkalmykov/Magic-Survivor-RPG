@@ -2,7 +2,7 @@ using Constants;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Views
 {
     [RequireComponent(typeof(TMP_Text))]
     public sealed class HighestScoreView : MonoBehaviour
@@ -17,6 +17,7 @@ namespace UI
         private void OnEnable()
         {
             _score.text = PlayerPrefs.GetString(PlayerPrefsConstants.Record);
+            PlayerPrefs.Save();
         }
     }
 }

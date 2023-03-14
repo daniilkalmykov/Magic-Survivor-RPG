@@ -6,6 +6,7 @@ using Infrastructure.UpgradedCards.Interfaces;
 using Infrastructure.UpgradedCards.StatsCards;
 using Player;
 using UI;
+using UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
