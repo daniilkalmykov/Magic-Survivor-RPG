@@ -9,10 +9,10 @@ namespace UI.Buttons
         
         protected override void OnClick()
         {
-            CloseShop();
+            Close();
         }
 
-        private void CloseShop()
+        private void Close()
         {
             _panel.gameObject.SetActive(false);
         }

@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using UI.Views;
 using UnityEngine;
 
@@ -14,6 +15,14 @@ namespace UI.Buttons
 
         private void OpenLeaderboard()
         {
+            PlayerAccount.Authorize();
+
+            if (PlayerAccount.IsAuthorized)
+                PlayerAccount.RequestPersonalProfileDataPermission();
+            
+            if(PlayerAccount.IsAuthorized == false)
+                return;
+            
             _leaderboard.gameObject.SetActive(true);
         }
     }

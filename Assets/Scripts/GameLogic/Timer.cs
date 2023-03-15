@@ -2,6 +2,7 @@
 using Constants;
 using UnityEngine;
 using YandexSDK;
+using Debug = UnityEngine.Debug;
 
 namespace GameLogic
 {
@@ -9,10 +10,10 @@ namespace GameLogic
     {
         private const int SecondsInMinute = 60;
         
+        private static float s_highestScore;
         private static string s_scoreText;
             
         private float _time;
-        private float _highestScore;
         private int _scoreSeconds;
         private int _scoreMinutes;
         
@@ -28,21 +29,16 @@ namespace GameLogic
             if (Seconds > SecondsInMinute)
                 Minutes++;
 
-            if (_highestScore >= _time) 
+            if (s_highestScore >= _time) 
                 return;
             
-            _highestScore = _time;
+            s_highestScore = _time;
             _scoreSeconds = Seconds;
             _scoreMinutes = Minutes;
 
             s_scoreText = _scoreSeconds.ToString().Length == 1
                 ? $"{_scoreMinutes} : 0{_scoreSeconds}"
                 : $"{_scoreMinutes} : {_scoreSeconds}";
-
-            PlayerPrefs.SetString(PlayerPrefsConstants.Record, s_scoreText);
-            PlayerPrefs.Save();
-            
-            Leaderboard.AddPlayer(Convert.ToInt32(_highestScore));
         }
 
         public static string ConvertIntToTime(int value)
@@ -51,6 +47,14 @@ namespace GameLogic
             var seconds = value - minutes;
 
             return seconds.ToString().Length == 1 ? $"{minutes} : 0{seconds}" : $"{minutes} : {seconds}";
+        }
+
+        public static void SaveScore()
+        {
+            PlayerPrefs.SetString(PlayerPrefsConstants.Record, s_scoreText);
+            PlayerPrefs.Save();
+
+            Leaderboard.AddPlayer(Convert.ToInt32(s_highestScore));
         }
     }
 }

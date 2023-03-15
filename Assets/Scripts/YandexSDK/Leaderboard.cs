@@ -25,24 +25,23 @@ namespace YandexSDK
         
         public void Fill()
         {
-            PlayerAccount.Authorize();
-
-            if (PlayerAccount.IsAuthorized)
-                PlayerAccount.RequestPersonalProfileDataPermission();
-
+            if(PlayerAccount.IsAuthorized == false)
+                return;
+            
             Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result =>
             {
-                var results = Mathf.Clamp(result.entries.Length, MinPlayersCount, MaxPlayersCount);
+                var results = result.entries.Length;
+                results = Mathf.Clamp(results, MinPlayersCount, MaxPlayersCount);
 
                 for (var i = 0; i < results; i++)
                 {
-                    var entry = result.entries[i];
-                    var playerName = entry.player.publicName;
+                    var score = result.entries[i].score;
+                    var playerName = result.entries[i].player.publicName;
 
                     if (string.IsNullOrEmpty(playerName))
                         playerName = "Anonymous";
 
-                    _leaderboardPlayers.Add(new LeaderboardPlayer(playerName, entry.score));
+                    _leaderboardPlayers.Add(new LeaderboardPlayer(playerName, score));
                 }
             });
         }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using Agava.YandexGames;
 using GameLogic;
-using UI;
 using UI.Panels;
 using UnityEngine;
 
@@ -49,6 +48,8 @@ namespace Player
         {
             base.Die();
             _deathPanel.gameObject.SetActive(true);
+            Timer.SaveScore();
+            Time.timeScale = 0;
         }
     }
 }

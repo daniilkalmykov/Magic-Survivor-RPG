@@ -1,5 +1,4 @@
 using Agava.YandexGames;
-using UI;
 using UI.Panels;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,8 +44,8 @@ namespace Infrastructure.Boosters
         private void OnRewardedCloseCallBack()
         {
             Time.timeScale = 1;
-            _boostersPanel.gameObject.SetActive(false);
             _audioListener.enabled = true;
+            _boostersPanel.gameObject.SetActive(false);
         }
     }
 }
