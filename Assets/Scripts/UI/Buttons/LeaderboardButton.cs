@@ -1,12 +1,14 @@
 using Agava.YandexGames;
 using UI.Views;
 using UnityEngine;
+using Leaderboard = YandexSDK.Leaderboard;
 
 namespace UI.Buttons
 {
     public sealed class LeaderboardButton : GameButton
     {
-        [SerializeField] private LeaderboardView _leaderboard;
+        [SerializeField] private Leaderboard _leaderboard;
+        [SerializeField] private LeaderboardView _leaderboardView;
         
         protected override void OnClick()
         {
@@ -23,7 +25,8 @@ namespace UI.Buttons
             if(PlayerAccount.IsAuthorized == false)
                 return;
             
-            _leaderboard.gameObject.SetActive(true);
+            _leaderboardView.gameObject.SetActive(true);
+            _leaderboard.Fill();
         }
     }
 }

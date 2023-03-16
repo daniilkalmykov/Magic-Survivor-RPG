@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Agava.YandexGames;
+using UI.Views;
 using UnityEngine;
 
 namespace YandexSDK
@@ -9,6 +10,8 @@ namespace YandexSDK
         private const string LeaderboardName = "Score";
         private const int MinPlayersCount = 1;
         private const int MaxPlayersCount = 5;
+
+        [SerializeField] private LeaderboardView _leaderboardView;
         
         private readonly List<LeaderboardPlayer> _leaderboardPlayers = new();
         
@@ -25,7 +28,9 @@ namespace YandexSDK
         
         public void Fill()
         {
-            if(PlayerAccount.IsAuthorized == false)
+            _leaderboardPlayers.Clear();
+
+            if (PlayerAccount.IsAuthorized == false)
                 return;
             
             Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result =>
@@ -43,17 +48,9 @@ namespace YandexSDK
 
                     _leaderboardPlayers.Add(new LeaderboardPlayer(playerName, score));
                 }
+
+                _leaderboardView.Create(_leaderboardPlayers);
             });
-        }
-
-        public void Clear()
-        {
-            _leaderboardPlayers.Clear();
-        }
-
-        public List<LeaderboardPlayer> GetPlayers()
-        {
-            return _leaderboardPlayers;
         }
     }
 }

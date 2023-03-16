@@ -1,14 +1,14 @@
-using Agava.YandexGames;
 using UI.Panels;
 using UnityEngine;
 using UnityEngine.UI;
+using YandexSDK;
 
 namespace Infrastructure.Boosters
 {
     [RequireComponent(typeof(Button))]
     public abstract class Booster : MonoBehaviour
     {
-        [SerializeField] private AudioListener _audioListener;
+        [SerializeField] private AdShower _adShower;
         [SerializeField] private BoostersPanel _boostersPanel;
         
         private Button _button;
@@ -21,31 +21,23 @@ namespace Infrastructure.Boosters
         protected void OnEnable()
         {
             _button.onClick.AddListener(OnClick);
+            _adShower.ClosedCallBack += OnCloseCallBack;
         }
 
         protected void OnDisable()
         {
             _button.onClick.RemoveListener(OnClick);
+            _adShower.ClosedCallBack -= OnCloseCallBack;
+        }
+        
+        protected virtual void OnCloseCallBack()
+        {
+            _boostersPanel.gameObject.SetActive(false);
         }
 
-        protected abstract void OnRewardedCallBack();
-        
         private void OnClick()
         {
-            VideoAd.Show(OnRewardedOpenCallBack, OnRewardedCloseCallBack, OnRewardedCallBack);
-        }
-
-        private void OnRewardedOpenCallBack()
-        {
-            Time.timeScale = 0;
-            _audioListener.enabled = false;
-        }
-
-        private void OnRewardedCloseCallBack()
-        {
-            Time.timeScale = 1;
-            _audioListener.enabled = true;
-            _boostersPanel.gameObject.SetActive(false);
+            _adShower.Show();
         }
     }
 }

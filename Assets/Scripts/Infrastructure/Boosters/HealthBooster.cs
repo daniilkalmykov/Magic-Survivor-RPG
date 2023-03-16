@@ -8,8 +8,9 @@ namespace Infrastructure.Boosters
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private int _addingHealth;
 
-        protected override void OnRewardedCallBack()
+        protected override void OnCloseCallBack()
         {
+            base.OnCloseCallBack();
             _playerHealth.TryIncrease(_addingHealth);
         }
     }

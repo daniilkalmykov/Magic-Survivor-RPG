@@ -1,14 +1,15 @@
 ﻿using System.Collections;
-using Agava.YandexGames;
 using GameLogic;
 using UI.Panels;
 using UnityEngine;
+using YandexSDK;
 
 namespace Player
 {
     [RequireComponent(typeof(PlayerMovement), typeof(PlayerRotation), typeof(PlayerAttacker))]
     public sealed class PlayerHealth : Health
     {
+        [SerializeField] private AdShower _adShower;
         [SerializeField] private DeathPanel _deathPanel;
         
         private PlayerAttacker _playerAttacker;
@@ -48,8 +49,11 @@ namespace Player
         {
             base.Die();
             _deathPanel.gameObject.SetActive(true);
+            
             Timer.SaveScore();
             Time.timeScale = 0;
+            
+            _adShower.Show();
         }
     }
 }
