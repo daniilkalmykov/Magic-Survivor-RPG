@@ -14,7 +14,7 @@ namespace UI.Buttons
 
         private void OpenSettingsPanel()
         {
-            _settingsPanel.gameObject.SetActive(false);
+            _settingsPanel.gameObject.SetActive(true);
         }
     }
 }

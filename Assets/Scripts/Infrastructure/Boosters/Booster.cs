@@ -21,22 +21,16 @@ namespace Infrastructure.Boosters
         protected void OnEnable()
         {
             _button.onClick.AddListener(OnClick);
-            _adShower.ClosedCallBack += OnCloseCallBack;
         }
 
         protected void OnDisable()
         {
             _button.onClick.RemoveListener(OnClick);
-            _adShower.ClosedCallBack -= OnCloseCallBack;
-        }
-        
-        protected virtual void OnCloseCallBack()
-        {
-            _boostersPanel.gameObject.SetActive(false);
         }
 
-        private void OnClick()
+        protected virtual void OnClick()
         {
+            _boostersPanel.gameObject.SetActive(false);
             _adShower.Show();
         }
     }

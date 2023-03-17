@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 2938571907751867619}
   - component: {fileID: 2301214461402080078}
   - component: {fileID: 3220171482582842239}
+  - component: {fileID: 7157706856856128392}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -355,7 +356,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0443\u0440\u043E\u043D
     \u043E\u0431\u044B\u0447\u043D\u043E\u0439 \u043F\u0443\u043B\u0438 \u043D\u0430
-    5\n"
+    5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -424,3 +425,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7157706856856128392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094472888178690454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Damage Card
+  FallbackText: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
+    \u0443\u0440\u043E\u043D \u043E\u0431\u044B\u0447\u043D\u043E\u0439 \u043F\u0443\u043B\u0438
+    \u043D\u0430 5\n"

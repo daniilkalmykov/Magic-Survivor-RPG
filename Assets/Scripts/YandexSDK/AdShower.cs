@@ -27,7 +27,7 @@ namespace YandexSDK
 
         protected void OnCloseCallBack(bool state)
         {
-            if(state == false)
+            if(state)
                 return;
             
             Time.timeScale = 1;

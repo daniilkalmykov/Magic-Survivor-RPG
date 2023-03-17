@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 4483142977685211477}
   - component: {fileID: 4452744247786901108}
   - component: {fileID: 4153781239540164615}
+  - component: {fileID: 391472942445268213}
   m_Layer: 5
   m_Name: Descrition
   m_TagString: Untagged
@@ -423,3 +424,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &391472942445268213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4441339301418473873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: PoisonTicksUpgradedCard
+  FallbackText: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
+    \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0442\u0438\u043A\u043E\u0432
+    \u043E\u0442 \u044F\u0434\u0430 \u043D\u0430 1"

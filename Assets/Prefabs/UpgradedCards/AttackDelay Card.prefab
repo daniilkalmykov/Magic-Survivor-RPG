@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1554414299812192770}
   - component: {fileID: 4775052976133448775}
   - component: {fileID: 7787669877917328396}
+  - component: {fileID: 3436963571150823167}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -66,9 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u043C\u0435\u043D\u044C\u0448\u0430\u0435\u0442 \u0432\u0440\u0435\u043C\u044F
-    \u043C\u0435\u0436\u0434\u0443 \u0430\u0442\u0430\u043A\u0430\u043C\u0438 \u043D\u0430
-    0.1"
+  m_text: Reduces the number of attacks by 1 to fire a bullet with poison (a bullet
+    with poison will open when pumping any poison card or bullet with poison)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 22.24
+  m_fontSizeBase: 22.24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -137,6 +137,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3436963571150823167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168257456961826368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: AttackDelay Card
+  FallbackText: "\u0423\u043C\u0435\u043D\u044C\u0448\u0430\u0435\u0442 \u0432\u0440\u0435\u043C\u044F
+    \u043C\u0435\u0436\u0434\u0443 \u0430\u0442\u0430\u043A\u0430\u043C\u0438 \u043D\u0430
+    0.1"
 --- !u!1 &2924872179397252309
 GameObject:
   m_ObjectHideFlags: 0

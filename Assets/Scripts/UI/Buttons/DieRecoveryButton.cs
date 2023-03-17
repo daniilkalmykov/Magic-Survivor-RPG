@@ -39,7 +39,9 @@ namespace UI.Buttons
         
         private void Recovery()
         {
+            _playerHealth.gameObject.SetActive(true);
             _playerHealth.ResetValues();
+            Time.timeScale = 1;
         }
     }
 }
