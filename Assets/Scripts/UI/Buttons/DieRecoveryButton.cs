@@ -1,4 +1,5 @@
 using Player;
+using UI.Panels;
 using UnityEngine;
 using YandexSDK;
 
@@ -8,6 +9,7 @@ namespace UI.Buttons
     {
         [SerializeField] private AdShower _adShower;
         [SerializeField] private PlayerHealth _playerHealth;
+        [SerializeField] private DeathPanel _deathPanel;
 
         protected override void OnEnable()
         {
@@ -41,7 +43,10 @@ namespace UI.Buttons
         {
             _playerHealth.gameObject.SetActive(true);
             _playerHealth.ResetValues();
+            
             Time.timeScale = 1;
+            
+            _deathPanel.gameObject.SetActive(false);
         }
     }
 }

@@ -1,3 +1,4 @@
+using GameLogic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,8 @@ namespace UI.Buttons
             _isMuted = true;
             _sound.sprite = _mutedSound;
             _audioListener.enabled = false;
+            
+            SoundMuter.Mute();
         }
 
         private void UnMute()
@@ -32,6 +35,8 @@ namespace UI.Buttons
             _isMuted = false;
             _sound.sprite = _unMutedSound;
             _audioListener.enabled = true;
+            
+            SoundMuter.Unmute();
         }
     }
 }

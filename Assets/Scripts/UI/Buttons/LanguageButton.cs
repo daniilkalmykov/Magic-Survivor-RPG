@@ -7,7 +7,6 @@ namespace UI.Buttons
     public class LanguageButton : GameButton
     {
         [SerializeField] private string _language;
-        [SerializeField] private LeanLocalization _leanLocalization;
         
         protected override void OnClick()
         {
@@ -16,7 +15,9 @@ namespace UI.Buttons
 
         private void SwitchLanguage()
         {
-            _leanLocalization.CurrentLanguage = _language;
+            LeanLocalization.SetCurrentLanguageAll(_language);
+            LeanLocalization.UpdateTranslations();
+            
             PlayerPrefs.SetString(PlayerPrefsConstants.Language, _language);
         }
     }

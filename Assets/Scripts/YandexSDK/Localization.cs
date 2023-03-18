@@ -2,13 +2,15 @@ using Constants;
 using Lean.Localization;
 using UnityEngine;
 
-public class Localization : MonoBehaviour
+namespace YandexSDK
 {
-    private void Start()
+    public sealed class Localization : MonoBehaviour
     {
-        var language = PlayerPrefs.GetString(PlayerPrefsConstants.Language);
+        private void Start()
+        {
+            var language = PlayerPrefs.GetString(PlayerPrefsConstants.Language);
         
-        /*if(language == null)
+            /*if(language == null)
         {
             switch (YandexGamesSdk.Environment.i18n.lang)
             {
@@ -30,7 +32,7 @@ public class Localization : MonoBehaviour
             }
         }
         else*/
-        {
+        
             LeanLocalization.SetCurrentLanguageAll(language);
             LeanLocalization.UpdateTranslations();
         }
