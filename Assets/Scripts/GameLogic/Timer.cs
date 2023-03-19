@@ -44,7 +44,7 @@ namespace GameLogic
         public static string ConvertIntToTime(int value)
         {
             var minutes = value / SecondsInMinute;
-            var seconds = value - minutes;
+            var seconds = value - minutes * SecondsInMinute;
 
             return seconds.ToString().Length == 1 ? $"{minutes} : 0{seconds}" : $"{minutes} : {seconds}";
         }

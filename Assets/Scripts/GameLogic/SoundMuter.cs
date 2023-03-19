@@ -5,9 +5,9 @@ namespace GameLogic
     [RequireComponent(typeof(AudioListener))]
     public sealed class SoundMuter : MonoBehaviour
     {
-        private static bool s_isMuted;
-
         private AudioListener _audioListener;
+
+        public static bool IsMuted { get; private set; }
 
         private void Awake()
         {
@@ -16,17 +16,17 @@ namespace GameLogic
 
         private void Start()
         {
-            _audioListener.enabled = !s_isMuted;
+            _audioListener.enabled = !IsMuted;
         }
 
         public static void Mute()
         {
-            s_isMuted = true;
+            IsMuted = true;
         }
 
         public static void Unmute()
         {
-            s_isMuted = false;
+            IsMuted = false;
         }
     }
 }

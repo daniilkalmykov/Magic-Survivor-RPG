@@ -12,7 +12,14 @@ namespace UI.Buttons
         [SerializeField] private AudioListener _audioListener;
         
         private bool _isMuted;
-        
+
+        private void Start()
+        {
+            _isMuted = SoundMuter.IsMuted;
+
+            _sound.sprite = _isMuted ? _mutedSound : _unMutedSound;
+        }
+
         protected override void OnClick()
         {
             if (_isMuted)
