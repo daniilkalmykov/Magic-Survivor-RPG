@@ -16,8 +16,10 @@ namespace UI.Buttons
         private void Start()
         {
             _isMuted = SoundMuter.IsMuted;
-
+            
             _sound.sprite = _isMuted ? _mutedSound : _unMutedSound;
+            
+            Debug.Log(_isMuted);
         }
 
         protected override void OnClick()
@@ -35,6 +37,8 @@ namespace UI.Buttons
             _audioListener.enabled = false;
             
             SoundMuter.Mute();
+            
+            Debug.Log(_isMuted);
         }
 
         private void UnMute()
@@ -44,6 +48,8 @@ namespace UI.Buttons
             _audioListener.enabled = true;
             
             SoundMuter.Unmute();
+            
+            Debug.Log(_isMuted);
         }
     }
 }

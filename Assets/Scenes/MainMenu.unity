@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Turkish
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 0
@@ -3118,6 +3118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd12e45566f40e1ba8890cad60059ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSources:
+  - {fileID: 237930012}
+  _volumes:
+  - 1
 --- !u!1 &1924616592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,7 +4485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &6543664786245376800
 CanvasRenderer:
   m_ObjectHideFlags: 0
