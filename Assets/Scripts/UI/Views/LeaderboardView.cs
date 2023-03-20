@@ -11,7 +11,9 @@ namespace UI.Views
     {
         [SerializeField] private LeaderboardPlayerView _leaderboardPlayerView;
         [SerializeField] private Image _label;
-        [SerializeField] private CloseButton _closeButton;      
+        [SerializeField] private CloseButton _closeButton;
+        [SerializeField] private SettingsButton _settingsButton;
+        [SerializeField] private HighestScoreView _highestScoreView;
 
         private readonly List<LeaderboardPlayerView> _spawnedPlayerViews = new();
 
@@ -19,12 +21,22 @@ namespace UI.Views
         {
             _label.gameObject.SetActive(true);
             _closeButton.gameObject.SetActive(true);
+
+            if (_settingsButton.TryGetComponent(out Button button))
+                button.interactable = false;
+            
+            _highestScoreView.gameObject.SetActive(false);
         }
 
         private void OnDisable()
         {
             _label.gameObject.SetActive(false);
             _closeButton.gameObject.SetActive(false);
+
+            if (_settingsButton.TryGetComponent(out Button button))
+                button.interactable = true;
+            
+            _highestScoreView.gameObject.SetActive(true);
         }
 
         public void Create(List<LeaderboardPlayer> players)

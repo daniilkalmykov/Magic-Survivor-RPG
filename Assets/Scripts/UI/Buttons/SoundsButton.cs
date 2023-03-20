@@ -37,8 +37,6 @@ namespace UI.Buttons
             _audioListener.enabled = false;
             
             SoundMuter.Mute();
-            
-            Debug.Log(_isMuted);
         }
 
         private void UnMute()
@@ -48,8 +46,6 @@ namespace UI.Buttons
             _audioListener.enabled = true;
             
             SoundMuter.Unmute();
-            
-            Debug.Log(_isMuted);
         }
     }
 }

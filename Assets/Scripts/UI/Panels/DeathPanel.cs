@@ -13,5 +13,10 @@ namespace UI.Panels
         {
             Time.timeScale = 1;
         }
+
+        private void Update()
+        {
+            Time.timeScale = 0;
+        }
     }
 }

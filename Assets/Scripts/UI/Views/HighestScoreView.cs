@@ -16,7 +16,7 @@ namespace UI.Views
 
         private void OnEnable()
         {
-            _score.text = PlayerPrefs.GetString(PlayerPrefsConstants.Record);
+            _score.text = PlayerPrefs.GetString(PlayerPrefsConstants.Record) ?? "00 : 00";
             PlayerPrefs.Save();
         }
     }

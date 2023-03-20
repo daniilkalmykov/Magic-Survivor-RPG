@@ -6,6 +6,7 @@ namespace Player
     public sealed class PlayerExperience : MonoBehaviour
     {
         [SerializeField] private int _borderExperienceToNextLevel;
+        [SerializeField] private ParticleSystem _buff;
 
         public event Action LevelChanged;
         public event Action<int, int> ExperienceChanged;
@@ -28,7 +29,8 @@ namespace Player
         public void AddExperience(int experience)
         {
             CurrentExperience += experience;
-
+            Instantiate(_buff, transform.position, Quaternion.identity, transform);
+            
             if (CurrentExperience >= ExperienceToNextLevel)
             {
                 Level++;

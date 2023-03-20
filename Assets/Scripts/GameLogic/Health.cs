@@ -9,6 +9,7 @@ namespace GameLogic
     public abstract class Health : MonoBehaviour
     {
         [SerializeField] private AnimationClip _dieAnimationClip;
+        [SerializeField] private ParticleSystem _hit;
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _addingHealthValue;
 
@@ -48,6 +49,7 @@ namespace GameLogic
                 return;
         
             _currentHealth -= damage;
+            Instantiate(_hit, transform.position, Quaternion.identity, transform);
 
             if (_currentHealth > 0)
                 _animator.SetTrigger(AnimatorStates.Hit);
