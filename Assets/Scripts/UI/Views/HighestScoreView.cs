@@ -16,7 +16,11 @@ namespace UI.Views
 
         private void OnEnable()
         {
-            _score.text = PlayerPrefs.GetString(PlayerPrefsConstants.Record) ?? "00 : 00";
+            if (string.IsNullOrEmpty(PlayerPrefs.GetString(PlayerPrefsConstants.Record)))
+                gameObject.SetActive(false);
+
+            _score.text = PlayerPrefs.GetString(PlayerPrefsConstants.Record);
+            
             PlayerPrefs.Save();
         }
     }

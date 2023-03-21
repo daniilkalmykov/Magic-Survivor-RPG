@@ -7,6 +7,7 @@ namespace Player
     {
         [SerializeField] private int _borderExperienceToNextLevel;
         [SerializeField] private ParticleSystem _buff;
+        [SerializeField] private AudioSource _buffSound;
 
         public event Action LevelChanged;
         public event Action<int, int> ExperienceChanged;
@@ -26,10 +27,18 @@ namespace Player
             ExperienceChanged?.Invoke(CurrentExperience, ExperienceToNextLevel);
         }
 
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.T))
+                AddExperience(ExperienceToNextLevel);
+        }
+
         public void AddExperience(int experience)
         {
             CurrentExperience += experience;
             Instantiate(_buff, transform.position, Quaternion.identity, transform);
+            
+            _buffSound.Play();
             
             if (CurrentExperience >= ExperienceToNextLevel)
             {

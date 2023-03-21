@@ -4,7 +4,6 @@ namespace Player
 {
     public sealed class PlayerRotation : MonoBehaviour
     {
-        [SerializeField] private Joystick _joystick;
         [SerializeField] private PlayerAttackingTrigger _playerAttackingTrigger;
         [SerializeField] private float _rotationSpeed;
 
@@ -20,21 +19,21 @@ namespace Player
             _playerAttackingTrigger.EnemyDetected -= OnEnemyDetected;
         }
 
-        private void Update()
+        public void Rotate(float horizontal, float vertical)
         {
             if (_playerAttackingTrigger.IsOpponentInTrigger == false)
             {
-                if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
-                {
-                    var moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
+                if (horizontal == 0 && vertical == 0)
+                    return;
+                
+                var moveDirection = new Vector3(horizontal, 0, vertical);
 
-                    if (Vector3.Angle(transform.forward, moveDirection) > 0)
-                    {
-                        var newDirection = Vector3.RotateTowards(transform.forward, moveDirection,
-                            _rotationSpeed * Time.deltaTime, 0);
-                        transform.rotation = Quaternion.LookRotation(newDirection);
-                    }
-                }
+                if (Vector3.Angle(transform.forward, moveDirection) <= 0) 
+                    return;
+                
+                var newDirection = Vector3.RotateTowards(transform.forward, moveDirection,
+                    _rotationSpeed * Time.deltaTime, 0);
+                transform.rotation = Quaternion.LookRotation(newDirection);
             }
             else
             {

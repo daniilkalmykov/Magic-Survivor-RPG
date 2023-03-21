@@ -25,6 +25,11 @@ namespace UI.Panels.Education
             _button.onClick.RemoveListener(OnCLick);
         }
 
+        private void Update()
+        {
+            Time.timeScale = 0;
+        }
+
         private void OnCLick()
         {
             gameObject.SetActive(false);

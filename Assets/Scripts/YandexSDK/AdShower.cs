@@ -7,8 +7,6 @@ namespace YandexSDK
     {
         [SerializeField] private AudioListener _audioListener;
 
-        public event Action ClosedCallBack;
-        
         public abstract void Show();
 
         protected void OnOpenCallBack()
@@ -21,8 +19,6 @@ namespace YandexSDK
         {
             Time.timeScale = 1;
             _audioListener.enabled = true;
-            
-            ClosedCallBack?.Invoke();
         }
 
         protected void OnCloseCallBack(bool state)
@@ -32,8 +28,6 @@ namespace YandexSDK
             
             Time.timeScale = 1;
             _audioListener.enabled = true;
-            
-            ClosedCallBack?.Invoke();
         }
     }
 }

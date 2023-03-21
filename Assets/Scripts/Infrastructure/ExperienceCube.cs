@@ -7,7 +7,7 @@ namespace Infrastructure
     {
         [SerializeField] private int _chanceToCreate;
         [SerializeField] private int _experience;
-
+        
         public int ChanceToCreate => _chanceToCreate;
 
         private void OnTriggerEnter(Collider other)

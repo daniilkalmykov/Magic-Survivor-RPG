@@ -37,7 +37,6 @@ namespace UI.Views
         private void OnClick()
         {
             _upgradedCard.MakeChosen();
-            
             Chose?.Invoke();
         }
     }

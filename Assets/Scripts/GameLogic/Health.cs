@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameLogic
 {
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Animator), typeof(AudioSource))]
     public abstract class Health : MonoBehaviour
     {
         [SerializeField] private AnimationClip _dieAnimationClip;
@@ -14,6 +14,7 @@ namespace GameLogic
         [SerializeField] private int _addingHealthValue;
 
         private Animator _animator;
+        private AudioSource _audioSource;
         private int _currentHealth;
     
         public event Action<int, int> Changed;
@@ -25,6 +26,7 @@ namespace GameLogic
         protected virtual void Awake()
         {
             _animator = GetComponent<Animator>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         protected virtual void OnEnable()
@@ -50,7 +52,7 @@ namespace GameLogic
         
             _currentHealth -= damage;
             Instantiate(_hit, transform.position, Quaternion.identity, transform);
-
+            
             if (_currentHealth > 0)
                 _animator.SetTrigger(AnimatorStates.Hit);
             else
@@ -59,6 +61,7 @@ namespace GameLogic
                 _animator.Play(_dieAnimationClip.name);
             
                 StartCoroutine(DieCoroutine());
+                _audioSource.Play();
             }
             
             Changed?.Invoke(_currentHealth, _maxHealth);

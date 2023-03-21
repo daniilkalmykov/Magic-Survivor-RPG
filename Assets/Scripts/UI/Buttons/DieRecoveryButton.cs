@@ -11,22 +11,10 @@ namespace UI.Buttons
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private DeathPanel _deathPanel;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            _adShower.ClosedCallBack += OnCloseCallBack;
-        }
-
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-            _adShower.ClosedCallBack -= OnCloseCallBack;
-        }
-
         protected override void OnClick()
         {
             ShowAdd();
+            Recovery();
         }
 
         private void ShowAdd()
@@ -34,17 +22,10 @@ namespace UI.Buttons
             _adShower.Show();
         }
 
-        private void OnCloseCallBack()
-        {
-            Recovery();
-        }
-        
         private void Recovery()
         {
             _playerHealth.gameObject.SetActive(true);
             _playerHealth.ResetValues();
-            
-            Time.timeScale = 1;
             
             _deathPanel.gameObject.SetActive(false);
         }
