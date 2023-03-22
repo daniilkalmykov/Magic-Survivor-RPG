@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chanceToCreate: 15
-  _experience: 150
+  _experience: 100
 --- !u!1001 &3203016823993640284
 PrefabInstance:
   m_ObjectHideFlags: 0

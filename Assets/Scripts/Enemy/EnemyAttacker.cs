@@ -12,7 +12,8 @@ namespace Enemy
         [SerializeField] private EnemyAttackingTrigger _enemyAttackingTrigger;
 
         private Animator _animator;
-        
+
+        public EnemyAttackingTrigger EnemyAttackingTrigger => _enemyAttackingTrigger;
         public Transform Player { get; private set; }
         protected PlayerHealth PlayerHealth { get; private set; }
 

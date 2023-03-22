@@ -8,16 +8,16 @@ namespace Enemy
         [SerializeField] private float _movementSpeed;
         
         private Transform _player;
-        private EnemyAttacker _enemyCloseAttacker;
+        private EnemyAttacker _enemyAttacker;
 
         private void Awake()
         {
-            _enemyCloseAttacker = GetComponent<EnemyAttacker>();
+            _enemyAttacker = GetComponent<EnemyAttacker>();
         }
 
         private void Start()
         {
-            _player = _enemyCloseAttacker.Player;
+            _player = _enemyAttacker.Player;
         }
 
         private void Update()
@@ -25,7 +25,11 @@ namespace Enemy
             if (_player == null)
                 return;
 
+            if (_enemyAttacker.EnemyAttackingTrigger.IsOpponentInTrigger)
+                return;
+                
             var playerPosition = _player.position;
+            
             transform.position =
                 Vector3.MoveTowards(transform.position, playerPosition, _movementSpeed * Time.deltaTime);
         }

@@ -12,11 +12,13 @@ namespace GameLogic
         [SerializeField] private ParticleSystem _hit;
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _addingHealthValue;
+        [SerializeField] private AudioSource _healingSound;
 
         private Animator _animator;
         private AudioSource _audioSource;
         private int _currentHealth;
-    
+        private bool _hasHitSound;
+
         public event Action<int, int> Changed;
         public event Action Died;
     
@@ -52,17 +54,20 @@ namespace GameLogic
         
             _currentHealth -= damage;
             Instantiate(_hit, transform.position, Quaternion.identity, transform);
-            
+
             if (_currentHealth > 0)
+            {
                 _animator.SetTrigger(AnimatorStates.Hit);
+            }
             else
             {
                 IsDied = true;
                 _animator.Play(_dieAnimationClip.name);
             
                 StartCoroutine(DieCoroutine());
-                _audioSource.Play();
             }
+            
+            _audioSource.Play();
             
             Changed?.Invoke(_currentHealth, _maxHealth);
         }
@@ -77,6 +82,7 @@ namespace GameLogic
         {
             _maxHealth += _addingHealthValue * level;
             ResetValues();
+            _healingSound.Play();
         }
 
         public void TryIncrease(int value)

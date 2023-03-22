@@ -23,6 +23,7 @@ namespace GameLogic
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerDeadZone _playerDeadZone;
         [SerializeField] private PlayerPoisonBullet _playerPoisonBullet;
+        [SerializeField] private AudioSource _choseSound;
 
         private readonly List<UpgradedCard> _generatedCards = new();
 
@@ -112,6 +113,8 @@ namespace GameLogic
                 throw new ArgumentNullException();
 
             chosenCard.UpgradeLevel();
+            
+            _choseSound.Play();
 
             foreach (var card in _generatedCards)
             {

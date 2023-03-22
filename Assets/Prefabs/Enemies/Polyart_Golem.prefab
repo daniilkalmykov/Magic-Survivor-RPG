@@ -428,6 +428,7 @@ MonoBehaviour:
   _hit: {fileID: 7551388611195229131, guid: a58aa9a78f2b45b45bb0f3e2e1e3ad3c, type: 3}
   _maxHealth: 250
   _addingHealthValue: 35
+  _healingSound: {fileID: 0}
   _experienceCubes:
   - {fileID: 5138764607067884772, guid: 40b984364e2f6c544a0fbaed636d9225, type: 3}
   - {fileID: 5138764607067884772, guid: 029225303e3ba374d99798b865bab333, type: 3}
@@ -474,7 +475,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7e3a7392f13d78947b423608bd522066, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.083
+  m_Volume: 0.038
   m_Pitch: 1
   Loop: 0
   Mute: 0
