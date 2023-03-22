@@ -2393,7 +2393,7 @@ RectTransform:
   m_GameObject: {fileID: 308217028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.83467615, y: 0.83467615, z: 0.83467615}
+  m_LocalScale: {x: 0.731385, y: 0.731385, z: 0.731385}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1032993656}
@@ -2402,7 +2402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51574075, y: 0.63520837}
   m_AnchorMax: {x: 0.51574075, y: 0.63520837}
-  m_AnchoredPosition: {x: -17, y: 250}
+  m_AnchoredPosition: {x: -17, y: 248.13}
   m_SizeDelta: {x: 1292, y: 335.0432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &308217030
@@ -2796,6 +2796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _education: {fileID: 1386433751}
+  _timerView: {fileID: 1005571036}
 --- !u!1 &428379711
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,7 +6304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2082264635702603874, guid: cf40fdbdf06c8491aa33f7d6edc813fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -476
+      value: -456
       objectReference: {fileID: 0}
     - target: {fileID: 2082264635702603874, guid: cf40fdbdf06c8491aa33f7d6edc813fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
