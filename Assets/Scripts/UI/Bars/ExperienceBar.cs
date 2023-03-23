@@ -14,6 +14,8 @@ namespace UI.Bars
         {
             _playerExperience.ExperienceChanged += OnValueChanged;
             _playerExperience.LevelChanged += OnLevelChanged;
+            
+            _playerExperience.InitActions();
         }
 
         private void OnDisable()

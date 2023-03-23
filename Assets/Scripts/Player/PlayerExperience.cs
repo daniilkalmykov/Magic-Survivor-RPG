@@ -23,8 +23,7 @@ namespace Player
 
         private void Start()
         {
-            LevelChanged?.Invoke();
-            ExperienceChanged?.Invoke(CurrentExperience, ExperienceToNextLevel);
+            InitActions();
         }
 
         private void Update()
@@ -50,6 +49,12 @@ namespace Player
                 LevelChanged?.Invoke();
             }
             
+            ExperienceChanged?.Invoke(CurrentExperience, ExperienceToNextLevel);
+        }
+
+        public void InitActions()
+        {
+            LevelChanged?.Invoke();
             ExperienceChanged?.Invoke(CurrentExperience, ExperienceToNextLevel);
         }
     }
