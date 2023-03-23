@@ -1,3 +1,4 @@
+using UI.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,8 @@ namespace UI.Panels.Education
     [RequireComponent(typeof(Button))]
     public abstract class EducationPanel : MonoBehaviour
     {
+        [SerializeField] private TimerView _timerView;
+        
         private Button _button;
 
         private void Awake()
@@ -13,16 +16,20 @@ namespace UI.Panels.Education
             _button = GetComponent<Button>();
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             Time.timeScale = 0;
+            
             _button.onClick.AddListener(OnCLick);
+            _timerView.gameObject.SetActive(false);
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             Time.timeScale = 1;
+            
             _button.onClick.RemoveListener(OnCLick);
+            _timerView.gameObject.SetActive(transform);
         }
 
         private void Update()

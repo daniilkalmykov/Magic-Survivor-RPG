@@ -13,13 +13,7 @@ namespace UI.Buttons
 
         protected override void OnClick()
         {
-            ShowAdd();
             Recovery();
-        }
-
-        private void ShowAdd()
-        {
-            _adShower.Show();
         }
 
         private void Recovery()
@@ -28,6 +22,8 @@ namespace UI.Buttons
             _playerHealth.ResetValues();
             
             _deathPanel.gameObject.SetActive(false);
+            
+            _adShower.Show();
         }
     }
 }
