@@ -7,6 +7,8 @@ namespace UI.Buttons
 {
     public class DieRecoveryButton : GameButton
     {
+        private const int MaxClicks = 1;
+        
         [SerializeField] private AdShower _adShower;
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private DeathPanel _deathPanel;
@@ -17,7 +19,7 @@ namespace UI.Buttons
         {
             base.OnEnable();
 
-            if (_clicks == 1)
+            if (_clicks == MaxClicks)
                 Button.interactable = false;
         }
 
