@@ -1,4 +1,5 @@
 using System;
+using GameLogic;
 using UnityEngine;
 
 namespace YandexSDK
@@ -12,13 +13,17 @@ namespace YandexSDK
         protected void OnOpenCallBack()
         {
             Time.timeScale = 0;
+            
             _audioListener.enabled = false;
+            SoundMuter.Mute();
         }
         
         protected void OnCloseCallBack()
         {
             Time.timeScale = 1;
+            
             _audioListener.enabled = true;
+            SoundMuter.Unmute();
         }
 
         protected void OnCloseCallBack(bool state)
@@ -27,7 +32,9 @@ namespace YandexSDK
                 return;
             
             Time.timeScale = 1;
+            
             _audioListener.enabled = true;
+            SoundMuter.Unmute();
         }
     }
 }

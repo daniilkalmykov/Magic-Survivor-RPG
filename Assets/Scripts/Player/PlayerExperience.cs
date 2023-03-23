@@ -26,12 +26,6 @@ namespace Player
             InitActions();
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.T))
-                AddExperience(ExperienceToNextLevel);
-        }
-
         public void AddExperience(int experience)
         {
             CurrentExperience += experience;
