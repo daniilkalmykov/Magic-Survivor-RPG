@@ -30,6 +30,8 @@ namespace Player
         private void OnEnable()
         {
             _playerAttackingTrigger.EnemyDetected += OnEnemyDetected;
+            
+            _playerAttackingTrigger.Init(AttackDistance);
         }
 
         private void OnDisable()
@@ -39,8 +41,6 @@ namespace Player
 
         private void Start()
         {
-            _playerAttackingTrigger.Init(AttackDistance);
-            
             _playerBullet.ResetDamage();
             
             _playerPoisonBullet.Deactivate();

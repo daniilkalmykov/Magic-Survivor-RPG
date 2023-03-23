@@ -11,6 +11,16 @@ namespace UI.Buttons
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private DeathPanel _deathPanel;
 
+        private int _clicks;
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            if (_clicks == 1)
+                Button.interactable = false;
+        }
+
         protected override void OnClick()
         {
             Recovery();
@@ -18,6 +28,8 @@ namespace UI.Buttons
 
         private void Recovery()
         {
+            _clicks++;
+            
             _playerHealth.gameObject.SetActive(true);
             _playerHealth.ResetValues();
             
