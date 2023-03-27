@@ -1,32 +1,20 @@
-using Agava.YandexGames;
-using UI.Views;
+using UI.Panels;
 using UnityEngine;
-using Leaderboard = YandexSDK.Leaderboard;
 
 namespace UI.Buttons
 {
-    public sealed class LeaderboardButton : GameButton
+    public class LeaderboardButton: GameButton
     {
-        [SerializeField] private Leaderboard _leaderboard;
-        [SerializeField] private LeaderboardView _leaderboardView;
+        [SerializeField] private LoginPanel _logInPanel;
         
         protected override void OnClick()
         {
-            OpenLeaderboard();
+            OpenLoginPanel();
         }
 
-        private void OpenLeaderboard()
+        private void OpenLoginPanel()
         {
-            PlayerAccount.Authorize();
-
-            if (PlayerAccount.IsAuthorized)
-                PlayerAccount.RequestPersonalProfileDataPermission();
-            
-            if(PlayerAccount.IsAuthorized == false)
-                return;
-            
-            _leaderboardView.gameObject.SetActive(true);
-            _leaderboard.Fill();
+            _logInPanel.gameObject.SetActive(true);
         }
     }
 }
