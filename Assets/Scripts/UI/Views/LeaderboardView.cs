@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GameLogic;
 using UI.Buttons;
+using UI.Panels;
 using UnityEngine;
 using UnityEngine.UI;
 using YandexSDK;
@@ -14,6 +15,7 @@ namespace UI.Views
         [SerializeField] private CloseButton _closeButton;
         [SerializeField] private SettingsButton _settingsButton;
         [SerializeField] private HighestScoreView _highestScoreView;
+        [SerializeField] private LoginPanel _loginPanel;
 
         private readonly List<LeaderboardPlayerView> _spawnedPlayerViews = new();
 
@@ -26,6 +28,7 @@ namespace UI.Views
                 button.interactable = false;
             
             _highestScoreView.gameObject.SetActive(false);
+            _loginPanel.gameObject.SetActive(false);
         }
 
         private void OnDisable()

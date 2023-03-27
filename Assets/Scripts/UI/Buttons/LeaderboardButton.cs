@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using UI.Panels;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace UI.Buttons
     public class LeaderboardButton: GameButton
     {
         [SerializeField] private LoginPanel _logInPanel;
+        [SerializeField] private LoginAcceptButton _loginAcceptButton;
         
         protected override void OnClick()
         {
@@ -14,7 +16,10 @@ namespace UI.Buttons
 
         private void OpenLoginPanel()
         {
-            _logInPanel.gameObject.SetActive(true);
+            if (PlayerAccount.IsAuthorized == false)
+                _logInPanel.gameObject.SetActive(true);
+            else
+                _loginAcceptButton.OpenLeaderboard();
         }
     }
 }

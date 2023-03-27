@@ -1,4 +1,5 @@
 using Agava.YandexGames;
+using UI.Panels;
 using UI.Views;
 using UnityEngine;
 using Leaderboard = YandexSDK.Leaderboard;
@@ -10,12 +11,7 @@ namespace UI.Buttons
         [SerializeField] private Leaderboard _leaderboard;
         [SerializeField] private LeaderboardView _leaderboardView;
         
-        protected override void OnClick()
-        {
-            OpenLeaderboard();
-        }
-
-        private void OpenLeaderboard()
+        public void OpenLeaderboard()
         {
             PlayerAccount.Authorize();
 
@@ -27,6 +23,11 @@ namespace UI.Buttons
             
             _leaderboardView.gameObject.SetActive(true);
             _leaderboard.Fill();
+        }
+
+        protected override void OnClick()
+        {
+            OpenLeaderboard();
         }
     }
 }

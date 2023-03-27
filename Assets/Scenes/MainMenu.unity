@@ -2224,6 +2224,7 @@ MonoBehaviour:
   _closeButton: {fileID: 1667891600}
   _settingsButton: {fileID: 131181207}
   _highestScoreView: {fileID: 343505833}
+  _loginPanel: {fileID: 874760482}
 --- !u!114 &1019186660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9494,6 +9495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _logInPanel: {fileID: 874760482}
+  _loginAcceptButton: {fileID: 975380362}
 --- !u!224 &3765604459348116076
 RectTransform:
   m_ObjectHideFlags: 0
